@@ -1,0 +1,798 @@
+================================================================================
+ Simplified Permutations
+================================================================================
+--------------------------------------------------------------------------------
+ base transformations
+--------------------------------------------------------------------------------
+
+T =
+  [ 1  0  tx ]
+  [ 0  1  ty ]
+  [ 0  0  1 ]
+
+
+R =
+  [ cosR  -sinR  0 ]
+  [ sinR  cosR  0 ]
+  [ 0  0  1 ]
+
+
+S =
+  [ Sx  0  0 ]
+  [ 0  Sy  0 ]
+  [ 0  0  1 ]
+
+
+H =
+  [ 1  A  0 ]
+  [ B  1  0 ]
+  [ 0  0  1 ]
+
+--------------------------------------------------------------------------------
+ x2 permutations
+--------------------------------------------------------------------------------
+
+TR =
+  [ cosR  -sinR  tx ]
+  [ sinR  cosR  ty ]
+  [ 0  0  1 ]
+
+
+TS =
+  [ Sx  0  tx ]
+  [ 0  Sy  ty ]
+  [ 0  0  1 ]
+
+
+TH =
+  [ 1  A  tx ]
+  [ B  1  ty ]
+  [ 0  0  1 ]
+
+
+RT =
+  [ cosR  -sinR  cosR*tx+-sinR*ty ]
+  [ sinR  cosR  sinR*tx+cosR*ty ]
+  [ 0  0  1 ]
+
+
+RS =
+  [ cosR*Sx  -sinR*Sy  0 ]
+  [ sinR*Sx  cosR*Sy  0 ]
+  [ 0  0  1 ]
+
+
+RH =
+  [ cosR+-sinR*B  cosR*A+-sinR  0 ]
+  [ sinR+cosR*B  sinR*A+cosR  0 ]
+  [ 0  0  1 ]
+
+
+HT =
+  [ 1  A  tx+A*ty ]
+  [ B  1  B*tx+ty ]
+  [ 0  0  1 ]
+
+
+HS =
+  [ Sx  A*Sy  0 ]
+  [ B*Sx  Sy  0 ]
+  [ 0  0  1 ]
+
+
+HR =
+  [ cosR+A*sinR  -sinR+A*cosR  0 ]
+  [ B*cosR+sinR  B*-sinR+cosR  0 ]
+  [ 0  0  1 ]
+
+
+ST =
+  [ Sx  0  Sx*tx ]
+  [ 0  Sy  Sy*ty ]
+  [ 0  0  1 ]
+
+
+SR =
+  [ Sx*cosR  Sx*-sinR  0 ]
+  [ Sy*sinR  Sy*cosR  0 ]
+  [ 0  0  1 ]
+
+
+SH =
+  [ Sx  Sx*A  0 ]
+  [ Sy*B  Sy  0 ]
+  [ 0  0  1 ]
+
+--------------------------------------------------------------------------------
+ x3 permutations
+--------------------------------------------------------------------------------
+
+STR =
+  [ Sx*cosR  Sx*-sinR  Sx*tx ]
+  [ Sy*sinR  Sy*cosR  Sy*ty ]
+  [ 0  0  1 ]
+
+
+STH =
+  [ Sx  Sx*A  Sx*tx ]
+  [ Sy*B  Sy  Sy*ty ]
+  [ 0  0  1 ]
+
+
+SRH =
+  [ Sx*cosR+Sx*-sinR*B  Sx*cosR*A+Sx*-sinR  Sx*0 ]
+  [ Sy*sinR+Sy*cosR*B  Sy*sinR*A+Sy*cosR  0 ]
+  [ 0  0  1 ]
+
+
+SRT =
+  [ Sx*cosR+Sx*0  Sx*-sinR  Sx*cosR*tx+Sx*-sinR*ty ]
+  [ Sy*sinR  Sy*cosR  Sy*sinR*tx+Sy*cosR*ty ]
+  [ 0  0  1 ]
+
+
+SHT =
+  [ Sx  Sx*A  Sx*tx+Sx*A*ty ]
+  [ Sy*B  Sy  Sy*B*tx+Sy*ty ]
+  [ 0  0  1 ]
+
+
+SHR =
+  [ Sx*cosR+Sx*A*sinR  Sx*-sinR+Sx*A*cosR  0 ]
+  [ Sy*B*cosR+Sy*sinR  Sy*B*-sinR+Sy*cosR  0 ]
+  [ 0  0  1 ]
+
+
+TRS =
+  [ cosR*Sx  -sinR*Sy  -sinR*tx ]
+  [ sinR*Sx  cosR*Sy  ty ]
+  [ 0  0  1 ]
+
+
+TRH =
+  [ cosR+-sinR*B  cosR*A+-sinR  -sinR*tx ]
+  [ sinR+cosR*B  sinR*A+cosR  ty ]
+  [ 0  0  1 ]
+
+
+TSR =
+  [ Sx*cosR  Sx*-sinR  tx ]
+  [ Sy*sinR  Sy*cosR  ty ]
+  [ 0  0  1 ]
+
+
+TSH =
+  [ Sx  Sx*A  tx ]
+  [ Sy*B  Sy  ty ]
+  [ 0  0  1 ]
+
+
+THR =
+  [ cosR+A*sinR  -sinR+A*cosR  tx ]
+  [ B*cosR+sinR  B*-sinR+cosR  ty ]
+  [ 0  0  1 ]
+
+
+THS =
+  [ Sx  A*Sy  tx ]
+  [ B*Sx  Sy  ty ]
+  [ 0  0  1 ]
+
+
+RTS =
+  [ cosR*Sx+-sinR*cosR*tx+-sinR*0  -sinR*Sy+cosR*tx+-sinR*0  -sinR*cosR*tx+-sinR*ty ]
+  [ sinR*Sx  cosR*Sy  sinR*tx+cosR*ty ]
+  [ 0  0  1 ]
+
+
+RTH =
+  [ cosR+-sinR*B+cosR*tx+-sinR*0  cosR*A+-sinR+cosR*tx+-sinR*0  -sinR*cosR*tx+-sinR*ty ]
+  [ sinR+cosR*B  sinR*A+cosR  sinR*tx+cosR*ty ]
+  [ 0  0  1 ]
+
+
+RST =
+  [ cosR*Sx+-sinR*0  -sinR*Sy  cosR*Sx*tx+-sinR*Sy*ty ]
+  [ sinR*Sx  cosR*Sy  sinR*Sx*tx+cosR*Sy*ty ]
+  [ 0  0  1 ]
+
+
+RSH =
+  [ cosR*Sx+-sinR*Sy*B  cosR*Sx*A+-sinR*Sy  -sinR*0 ]
+  [ sinR*Sx+cosR*Sy*B  sinR*Sx*A+cosR*Sy  0 ]
+  [ 0  0  1 ]
+
+
+RHS =
+  [ cosR+-sinR*B*Sx+cosR*A  cosR+-sinR*B*cosR*A+-sinR*Sy  cosR+-sinR*B*cosR*A ]
+  [ sinR+cosR*B*Sx  sinR*A+cosR*Sy  0 ]
+  [ 0  0  1 ]
+
+
+RHT =
+  [ cosR+-sinR*B+cosR*A  cosR+-sinR*B*cosR*A+-sinR  cosR+-sinR*B*tx+cosR*A+-sinR*ty ]
+  [ sinR+cosR*B  sinR*A+cosR  sinR+cosR*B*tx+sinR*A+cosR*ty ]
+  [ 0  0  1 ]
+
+
+HTS =
+  [ Sx  A*Sy  tx+A*ty ]
+  [ B*Sx  Sy  B*tx+ty ]
+  [ 0  0  1 ]
+
+
+HTR =
+  [ cosR+A*sinR  -sinR+A*cosR  tx+A*ty ]
+  [ B*cosR+sinR  B*-sinR+cosR  B*tx+ty ]
+  [ 0  0  1 ]
+
+
+HSR =
+  [ Sx*cosR+A*Sy*sinR  Sx*-sinR+A*Sy*cosR  0 ]
+  [ B*Sx*cosR+Sy*sinR  B*Sx*-sinR+Sy*cosR  0 ]
+  [ 0  0  1 ]
+
+
+HST =
+  [ Sx  A*Sy  Sx*tx+A*Sy*ty ]
+  [ B*Sx  Sy  B*Sx*tx+Sy*ty ]
+  [ 0  0  1 ]
+
+
+HRS =
+  [ cosR+A*sinR*Sx+-sinR+A*0  -sinR+A*cosR*Sy  -sinR+A*0 ]
+  [ B*cosR+sinR*Sx+B*-sinR  B*-sinR+cosR*Sy  B*-sinR ]
+  [ 0  0  1 ]
+
+
+HRT =
+  [ cosR+A*sinR+-sinR+A*0  -sinR+A*cosR  cosR+A*sinR*tx+-sinR+A*cosR*ty ]
+  [ B*cosR+sinR+B*-sinR  B*-sinR+cosR  B*cosR+sinR*tx+B*-sinR+cosR*ty ]
+  [ 0  0  1 ]
+
+--------------------------------------------------------------------------------
+ x4 permutations
+--------------------------------------------------------------------------------
+
+HSTR =
+  [ Sx*cosR+A*Sy*sinR  Sx*-sinR+A*Sy*cosR  Sx*tx+A*Sy*ty ]
+  [ B*Sx*cosR+Sy*sinR  B*Sx*-sinR+Sy*cosR  B*Sx*tx+Sy*ty ]
+  [ 0  0  1 ]
+
+
+HTSR =
+  [ Sx*cosR+A*Sy*sinR  Sx*-sinR+A*Sy*cosR  tx+A*ty ]
+  [ B*Sx*cosR+Sy*sinR  B*Sx*-sinR+Sy*cosR  B*tx+ty ]
+  [ 0  0  1 ]
+
+
+HTRS =
+  [ cosR+A*sinR*Sx+-sinR  -sinR+A*cosR*Sy  -sinR+A*cosR*tx+A*ty ]
+  [ B*cosR+sinR*Sx+B*-sinR  B*-sinR+cosR*Sy  B*-sinR+cosR*B*tx+ty ]
+  [ 0  0  1 ]
+
+
+HSRT =
+  [ Sx*cosR+A*Sy*sinR+Sx*-sinR+A*0  Sx*-sinR+A*Sy*cosR  Sx*cosR+A*Sy*sinR*tx+Sx*-sinR+A*Sy*cosR*ty ]
+  [ B*Sx*cosR+Sy*sinR+B*Sx*-sinR  B*Sx*-sinR+Sy*cosR  B*Sx*cosR+Sy*sinR*tx+B*Sx*-sinR+Sy*cosR*ty ]
+  [ 0  0  1 ]
+
+
+HRST =
+  [ cosR+A*sinR*Sx+-sinR+-sinR+A*cosR*Sy*-sinR  cosR+A*sinR*Sx+-sinR+A*cosR*Sy+-sinR  cosR+A*sinR*Sx+-sinR+-sinR+A*cosR*Sy*ty+-sinR ]
+  [ B*cosR+sinR*Sx+B*-sinR+B*-sinR+cosR*Sy*0  B*cosR+sinR*Sx+B*-sinR*B*-sinR+cosR*Sy  B*cosR+sinR*Sx+B*-sinR*tx+B*-sinR+cosR*Sy*ty+B*-sinR ]
+  [ 0  0  1 ]
+
+
+HRTS =
+  [ cosR+A*sinR+-sinR+-sinR+A*cosR*cosR+A*sinR*tx+-sinR+A*0  cosR+A*sinR+-sinR+A*cosR*Sy+cosR+A*sinR*tx+-sinR+A*0  cosR+A*sinR+-sinR+A*cosR*cosR+A*sinR*tx+-sinR+A*cosR*ty ]
+  [ B*cosR+sinR+B*-sinR*Sx+B*-sinR+cosR*B*cosR+sinR*tx+B*-sinR  B*cosR+sinR+B*-sinR*B*-sinR+cosR*Sy+B*cosR+sinR*tx+B*-sinR  B*cosR+sinR+B*-sinR*B*-sinR+cosR*B*cosR+sinR*tx+B*-sinR+cosR*ty ]
+  [ 0  0  1 ]
+
+
+TRSH =
+  [ cosR*Sx+-sinR*Sy*B  cosR*Sx*A+-sinR*Sy  -sinR*Sy*-sinR*tx ]
+  [ sinR*Sx+cosR*Sy*B  sinR*Sx*A+cosR*Sy  ty ]
+  [ 0  0  1 ]
+
+
+TRHS =
+  [ cosR+-sinR*B*Sx+cosR*A+-sinR*0  cosR+-sinR*B*cosR*A+-sinR*Sy  cosR+-sinR*B*cosR*A+-sinR*-sinR*tx ]
+  [ sinR+cosR*B*Sx  sinR*A+cosR*Sy  ty ]
+  [ 0  0  1 ]
+
+
+TSRH =
+  [ Sx*cosR+Sx*-sinR*B  Sx*cosR*A+Sx*-sinR  Sx*-sinR*tx ]
+  [ Sy*sinR+Sy*cosR*B  Sy*sinR*A+Sy*cosR  ty ]
+  [ 0  0  1 ]
+
+
+TSHR =
+  [ Sx*cosR+Sx*A*sinR  Sx*-sinR+Sx*A*cosR  tx ]
+  [ Sy*B*cosR+Sy*sinR  Sy*B*-sinR+Sy*cosR  ty ]
+  [ 0  0  1 ]
+
+
+THRS =
+  [ cosR+A*sinR*Sx+-sinR  -sinR+A*cosR*Sy  -sinR+A*cosR*tx ]
+  [ B*cosR+sinR*Sx+B*-sinR  B*-sinR+cosR*Sy  B*-sinR+cosR*ty ]
+  [ 0  0  1 ]
+
+
+THSR =
+  [ Sx*cosR+A*Sy*sinR  Sx*-sinR+A*Sy*cosR  tx ]
+  [ B*Sx*cosR+Sy*sinR  B*Sx*-sinR+Sy*cosR  ty ]
+  [ 0  0  1 ]
+
+
+RTSH =
+  [ cosR*Sx+-sinR*cosR*tx+-sinR*Sy+cosR*tx+-sinR*cosR*tx  cosR*Sx+-sinR*cosR*tx+-sinR*Sy+cosR*tx+-sinR*cosR*tx  cosR*Sx+-sinR*cosR*tx*Sy+cosR*tx*cosR*tx+-sinR*ty ]
+  [ sinR*Sx+cosR*Sy*B  sinR*Sx*A+cosR*Sy  sinR*tx+cosR*ty ]
+  [ 0  0  1 ]
+
+
+RTHS =
+  [ cosR+-sinR*B+cosR*tx+cosR*A+-sinR+cosR*tx*cosR*tx  cosR+-sinR*B+cosR*tx*A+-sinR+cosR*tx+-sinR*cosR*tx  cosR+-sinR*B+cosR*tx*A+-sinR+cosR*tx*cosR*tx+-sinR*ty ]
+  [ sinR+cosR*B*Sx  sinR*A+cosR*Sy  sinR*tx+cosR*ty ]
+  [ 0  0  1 ]
+
+
+RSTH =
+  [ cosR*Sx+-sinR*Sy*B+cosR*Sx*tx+-sinR*0  cosR*Sx+-sinR*Sy+cosR*Sx*tx+-sinR*0  cosR*Sx*Sy*cosR*Sx*tx+-sinR*Sy*ty ]
+  [ sinR*Sx+cosR*Sy*B  sinR*Sx*A+cosR*Sy  sinR*Sx*tx+cosR*Sy*ty ]
+  [ 0  0  1 ]
+
+
+RSHT =
+  [ cosR*Sx+-sinR*Sy*B+cosR*Sx*A+-sinR*0  cosR*Sx+-sinR*Sy*B*cosR*Sx*A+-sinR*Sy  cosR*Sx+-sinR*Sy*B*tx+cosR*Sx*A+-sinR*Sy*ty ]
+  [ sinR*Sx+cosR*Sy*B  sinR*Sx*A+cosR*Sy  sinR*Sx+cosR*Sy*B*tx+sinR*Sx*A+cosR*Sy*ty ]
+  [ 0  0  1 ]
+
+
+RHST =
+  [ cosR+-sinR*B*Sx+cosR*A+cosR+-sinR*B*cosR*A+-sinR*Sy*cosR+-sinR*B*0  cosR+-sinR*B*Sx+cosR*A*cosR+-sinR*B*cosR*A+-sinR*Sy+cosR+-sinR*B*0  cosR+-sinR*B*Sx+cosR*A*tx+cosR+-sinR*B*cosR*A+-sinR*Sy*ty+cosR+-sinR*B*cosR*A ]
+  [ sinR+cosR*B*Sx  sinR*A+cosR*Sy  sinR+cosR*B*Sx*tx+sinR*A+cosR*Sy*ty ]
+  [ 0  0  1 ]
+
+
+RHTS =
+  [ cosR+-sinR*B+cosR*A*Sx+cosR+-sinR*B*cosR*A+-sinR*cosR+-sinR*B*tx+cosR*A  cosR+-sinR*B+cosR*A*cosR+-sinR*B*cosR*A+-sinR*Sy+cosR+-sinR*B*tx+cosR*A  cosR+-sinR*B+cosR*A*cosR+-sinR*B*cosR*A+-sinR*cosR+-sinR*B*tx+cosR*A+-sinR*ty ]
+  [ sinR+cosR*B*Sx  sinR*A+cosR*Sy  sinR+cosR*B*tx+sinR*A+cosR*ty ]
+  [ 0  0  1 ]
+
+
+STHR =
+  [ Sx*cosR+Sx*A*sinR  Sx*-sinR+Sx*A*cosR  Sx*tx ]
+  [ Sy*B*cosR+Sy*sinR  Sy*B*-sinR+Sy*cosR  Sy*ty ]
+  [ 0  0  1 ]
+
+
+STRH =
+  [ Sx*cosR+Sx*-sinR*B  Sx*cosR*A+Sx*-sinR  Sx*-sinR*Sx*tx ]
+  [ Sy*sinR+Sy*cosR*B  Sy*sinR*A+Sy*cosR  Sy*ty ]
+  [ 0  0  1 ]
+
+
+SRHT =
+  [ Sx*cosR+Sx*-sinR*B+Sx*cosR*A  Sx*cosR+Sx*-sinR*B*Sx*cosR*A+Sx*-sinR  Sx*cosR+Sx*-sinR*B*tx+Sx*cosR*A+Sx*-sinR*ty ]
+  [ Sy*sinR+Sy*cosR*B  Sy*sinR*A+Sy*cosR  Sy*sinR+Sy*cosR*B*tx+Sy*sinR*A+Sy*cosR*ty ]
+  [ 0  0  1 ]
+
+
+SRTH =
+  [ Sx*cosR+Sx*-sinR*B+Sx*cosR*tx+Sx*0  Sx*cosR+Sx*-sinR+Sx*cosR*tx+Sx*0  Sx*-sinR*Sx*cosR*tx+Sx*-sinR*ty ]
+  [ Sy*sinR+Sy*cosR*B  Sy*sinR*A+Sy*cosR  Sy*sinR*tx+Sy*cosR*ty ]
+  [ 0  0  1 ]
+
+
+SHTR =
+  [ Sx*cosR+Sx*A*sinR  Sx*-sinR+Sx*A*cosR  Sx*tx+Sx*A*ty ]
+  [ Sy*B*cosR+Sy*sinR  Sy*B*-sinR+Sy*cosR  Sy*B*tx+Sy*ty ]
+  [ 0  0  1 ]
+
+
+SHRT =
+  [ Sx*cosR+Sx*A*sinR+Sx*-sinR+Sx*0  Sx*-sinR+Sx*A*cosR  Sx*cosR+Sx*A*sinR*tx+Sx*-sinR+Sx*A*cosR*ty ]
+  [ Sy*B*cosR+Sy*sinR+Sy*B*-sinR  Sy*B*-sinR+Sy*cosR  Sy*B*cosR+Sy*sinR*tx+Sy*B*-sinR+Sy*cosR*ty ]
+  [ 0  0  1 ]
+
+================================================================================
+ Raw Permutations
+================================================================================
+--------------------------------------------------------------------------------
+ base transformations
+--------------------------------------------------------------------------------
+
+T =
+  [ 1  0  tx ]
+  [ 0  1  ty ]
+  [ 0  0  1 ]
+
+
+R =
+  [ cosR  -sinR  0 ]
+  [ sinR  cosR  0 ]
+  [ 0  0  1 ]
+
+
+S =
+  [ Sx  0  0 ]
+  [ 0  Sy  0 ]
+  [ 0  0  1 ]
+
+
+H =
+  [ 1  A  0 ]
+  [ B  1  0 ]
+  [ 0  0  1 ]
+
+--------------------------------------------------------------------------------
+ x2 permutations
+--------------------------------------------------------------------------------
+
+TR =
+  [ 1*cosR+0*sinR+tx*0  1*-sinR+0*cosR+tx*0  1*0+0*0+tx*1 ]
+  [ 0*cosR+1*sinR+ty*0  0*-sinR+1*cosR+ty*0  0*0+1*0+ty*1 ]
+  [ 0*0+0*sinR+1*0  0*0+0*cosR+1*0  0*1+0*0+1*1 ]
+
+
+TS =
+  [ 1*Sx+0*0+tx*0  1*0+0*Sy+tx*0  1*0+0*0+tx*1 ]
+  [ 0*Sx+1*0+ty*0  0*0+1*Sy+ty*0  0*0+1*0+ty*1 ]
+  [ 0*0+0*0+1*0  0*0+0*Sy+1*0  0*1+0*0+1*1 ]
+
+
+TH =
+  [ 1*1+0*B+tx*0  1*A+0*1+tx*0  1*0+0*0+tx*1 ]
+  [ 0*1+1*B+ty*0  0*A+1*1+ty*0  0*0+1*0+ty*1 ]
+  [ 0*0+0*B+1*0  0*0+0*1+1*0  0*1+0*0+1*1 ]
+
+
+RT =
+  [ cosR*1+-sinR*0+0*0  cosR*0+-sinR*1+0*0  cosR*tx+-sinR*ty+0*1 ]
+  [ sinR*1+cosR*0+0*0  sinR*0+cosR*1+0*0  sinR*tx+cosR*ty+0*1 ]
+  [ 0*0+0*0+1*0  0*0+0*1+1*0  0*1+0*ty+1*1 ]
+
+
+RS =
+  [ cosR*Sx+-sinR*0+0*0  cosR*0+-sinR*Sy+0*0  cosR*0+-sinR*0+0*1 ]
+  [ sinR*Sx+cosR*0+0*0  sinR*0+cosR*Sy+0*0  sinR*0+cosR*0+0*1 ]
+  [ 0*0+0*0+1*0  0*0+0*Sy+1*0  0*1+0*0+1*1 ]
+
+
+RH =
+  [ cosR*1+-sinR*B+0*0  cosR*A+-sinR*1+0*0  cosR*0+-sinR*0+0*1 ]
+  [ sinR*1+cosR*B+0*0  sinR*A+cosR*1+0*0  sinR*0+cosR*0+0*1 ]
+  [ 0*0+0*B+1*0  0*0+0*1+1*0  0*1+0*0+1*1 ]
+
+
+HT =
+  [ 1*1+A*0+0*0  1*0+A*1+0*0  1*tx+A*ty+0*1 ]
+  [ B*1+1*0+0*0  B*0+1*1+0*0  B*tx+1*ty+0*1 ]
+  [ 0*0+0*0+1*0  0*0+0*1+1*0  0*1+0*ty+1*1 ]
+
+
+HS =
+  [ 1*Sx+A*0+0*0  1*0+A*Sy+0*0  1*0+A*0+0*1 ]
+  [ B*Sx+1*0+0*0  B*0+1*Sy+0*0  B*0+1*0+0*1 ]
+  [ 0*0+0*0+1*0  0*0+0*Sy+1*0  0*1+0*0+1*1 ]
+
+
+HR =
+  [ 1*cosR+A*sinR+0*0  1*-sinR+A*cosR+0*0  1*0+A*0+0*1 ]
+  [ B*cosR+1*sinR+0*0  B*-sinR+1*cosR+0*0  B*0+1*0+0*1 ]
+  [ 0*0+0*sinR+1*0  0*0+0*cosR+1*0  0*1+0*0+1*1 ]
+
+
+ST =
+  [ Sx*1+0*0+0*0  Sx*0+0*1+0*0  Sx*tx+0*ty+0*1 ]
+  [ 0*1+Sy*0+0*0  0*0+Sy*1+0*0  0*tx+Sy*ty+0*1 ]
+  [ 0*0+0*0+1*0  0*0+0*1+1*0  0*1+0*ty+1*1 ]
+
+
+SR =
+  [ Sx*cosR+0*sinR+0*0  Sx*-sinR+0*cosR+0*0  Sx*0+0*0+0*1 ]
+  [ 0*cosR+Sy*sinR+0*0  0*-sinR+Sy*cosR+0*0  0*0+Sy*0+0*1 ]
+  [ 0*0+0*sinR+1*0  0*0+0*cosR+1*0  0*1+0*0+1*1 ]
+
+
+SH =
+  [ Sx*1+0*B+0*0  Sx*A+0*1+0*0  Sx*0+0*0+0*1 ]
+  [ 0*1+Sy*B+0*0  0*A+Sy*1+0*0  0*0+Sy*0+0*1 ]
+  [ 0*0+0*B+1*0  0*0+0*1+1*0  0*1+0*0+1*1 ]
+
+--------------------------------------------------------------------------------
+ x3 permutations
+--------------------------------------------------------------------------------
+
+STR =
+  [ Sx*1+0*0+0*0*cosR+Sx*0+0*1+0*0*sinR+Sx*tx+0*ty+0*1*0  Sx*1+0*0+0*0*-sinR+Sx*0+0*1+0*0*cosR+Sx*tx+0*ty+0*1*0  Sx*1+0*0+0*0*0+Sx*0+0*1+0*0*0+Sx*tx+0*ty+0*1*1 ]
+  [ 0*1+Sy*0+0*0*cosR+0*0+Sy*1+0*0*sinR+0*tx+Sy*ty+0*1*0  0*1+Sy*0+0*0*-sinR+0*0+Sy*1+0*0*cosR+0*tx+Sy*ty+0*1*0  0*1+Sy*0+0*0*0+0*0+Sy*1+0*0*0+0*tx+Sy*ty+0*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*1+1*0*sinR+0*1+0*ty+1*1*0  0*0+0*0+1*0*0+0*0+0*1+1*0*cosR+0*1+0*ty+1*1*0  0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1 ]
+
+
+STH =
+  [ Sx*1+0*0+0*0*1+Sx*0+0*1+0*0*B+Sx*tx+0*ty+0*1*0  Sx*1+0*0+0*0*A+Sx*0+0*1+0*0*1+Sx*tx+0*ty+0*1*0  Sx*1+0*0+0*0*0+Sx*0+0*1+0*0*0+Sx*tx+0*ty+0*1*1 ]
+  [ 0*1+Sy*0+0*0*1+0*0+Sy*1+0*0*B+0*tx+Sy*ty+0*1*0  0*1+Sy*0+0*0*A+0*0+Sy*1+0*0*1+0*tx+Sy*ty+0*1*0  0*1+Sy*0+0*0*0+0*0+Sy*1+0*0*0+0*tx+Sy*ty+0*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*1+1*0*B+0*1+0*ty+1*1*0  0*0+0*0+1*0*0+0*0+0*1+1*0*1+0*1+0*ty+1*1*0  0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1 ]
+
+
+SRH =
+  [ Sx*cosR+0*sinR+0*0*1+Sx*-sinR+0*cosR+0*0*B+Sx*0+0*0+0*1*0  Sx*cosR+0*sinR+0*0*A+Sx*-sinR+0*cosR+0*0*1+Sx*0+0*0+0*1*0  Sx*cosR+0*sinR+0*0*0+Sx*-sinR+0*cosR+0*0*0+Sx*0+0*0+0*1*1 ]
+  [ 0*cosR+Sy*sinR+0*0*1+0*-sinR+Sy*cosR+0*0*B+0*0+Sy*0+0*1*0  0*cosR+Sy*sinR+0*0*A+0*-sinR+Sy*cosR+0*0*1+0*0+Sy*0+0*1*0  0*cosR+Sy*sinR+0*0*0+0*-sinR+Sy*cosR+0*0*0+0*0+Sy*0+0*1*1 ]
+  [ 0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*B+0*1+0*0+1*1*0  0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*1+0*1+0*0+1*1*0  0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*0+0*1+0*0+1*1*1 ]
+
+
+SRT =
+  [ Sx*cosR+0*sinR+0*0*1+Sx*-sinR+0*cosR+0*0*0+Sx*0+0*0+0*1*0  Sx*cosR+0*sinR+0*0*0+Sx*-sinR+0*cosR+0*0*1+Sx*0+0*0+0*1*0  Sx*cosR+0*sinR+0*0*tx+Sx*-sinR+0*cosR+0*0*ty+Sx*0+0*0+0*1*1 ]
+  [ 0*cosR+Sy*sinR+0*0*1+0*-sinR+Sy*cosR+0*0*0+0*0+Sy*0+0*1*0  0*cosR+Sy*sinR+0*0*0+0*-sinR+Sy*cosR+0*0*1+0*0+Sy*0+0*1*0  0*cosR+Sy*sinR+0*0*tx+0*-sinR+Sy*cosR+0*0*ty+0*0+Sy*0+0*1*1 ]
+  [ 0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*0+0*1+0*0+1*1*0  0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*1+0*1+0*0+1*1*0  0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*ty+0*1+0*0+1*1*1 ]
+
+
+SHT =
+  [ Sx*1+0*B+0*0*1+Sx*A+0*1+0*0*0+Sx*0+0*0+0*1*0  Sx*1+0*B+0*0*0+Sx*A+0*1+0*0*1+Sx*0+0*0+0*1*0  Sx*1+0*B+0*0*tx+Sx*A+0*1+0*0*ty+Sx*0+0*0+0*1*1 ]
+  [ 0*1+Sy*B+0*0*1+0*A+Sy*1+0*0*0+0*0+Sy*0+0*1*0  0*1+Sy*B+0*0*0+0*A+Sy*1+0*0*1+0*0+Sy*0+0*1*0  0*1+Sy*B+0*0*tx+0*A+Sy*1+0*0*ty+0*0+Sy*0+0*1*1 ]
+  [ 0*0+0*B+1*0*0+0*0+0*1+1*0*0+0*1+0*0+1*1*0  0*0+0*B+1*0*0+0*0+0*1+1*0*1+0*1+0*0+1*1*0  0*0+0*B+1*0*1+0*0+0*1+1*0*ty+0*1+0*0+1*1*1 ]
+
+
+SHR =
+  [ Sx*1+0*B+0*0*cosR+Sx*A+0*1+0*0*sinR+Sx*0+0*0+0*1*0  Sx*1+0*B+0*0*-sinR+Sx*A+0*1+0*0*cosR+Sx*0+0*0+0*1*0  Sx*1+0*B+0*0*0+Sx*A+0*1+0*0*0+Sx*0+0*0+0*1*1 ]
+  [ 0*1+Sy*B+0*0*cosR+0*A+Sy*1+0*0*sinR+0*0+Sy*0+0*1*0  0*1+Sy*B+0*0*-sinR+0*A+Sy*1+0*0*cosR+0*0+Sy*0+0*1*0  0*1+Sy*B+0*0*0+0*A+Sy*1+0*0*0+0*0+Sy*0+0*1*1 ]
+  [ 0*0+0*B+1*0*0+0*0+0*1+1*0*sinR+0*1+0*0+1*1*0  0*0+0*B+1*0*0+0*0+0*1+1*0*cosR+0*1+0*0+1*1*0  0*0+0*B+1*0*1+0*0+0*1+1*0*0+0*1+0*0+1*1*1 ]
+
+
+TRS =
+  [ 1*cosR+0*sinR+tx*0*Sx+1*-sinR+0*cosR+tx*0*0+1*0+0*0+tx*1*0  1*cosR+0*sinR+tx*0*0+1*-sinR+0*cosR+tx*0*Sy+1*0+0*0+tx*1*0  1*cosR+0*sinR+tx*0*0+1*-sinR+0*cosR+tx*0*0+1*0+0*0+tx*1*1 ]
+  [ 0*cosR+1*sinR+ty*0*Sx+0*-sinR+1*cosR+ty*0*0+0*0+1*0+ty*1*0  0*cosR+1*sinR+ty*0*0+0*-sinR+1*cosR+ty*0*Sy+0*0+1*0+ty*1*0  0*cosR+1*sinR+ty*0*0+0*-sinR+1*cosR+ty*0*0+0*0+1*0+ty*1*1 ]
+  [ 0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*0+0*1+0*0+1*1*0  0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*Sy+0*1+0*0+1*1*0  0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*0+0*1+0*0+1*1*1 ]
+
+
+TRH =
+  [ 1*cosR+0*sinR+tx*0*1+1*-sinR+0*cosR+tx*0*B+1*0+0*0+tx*1*0  1*cosR+0*sinR+tx*0*A+1*-sinR+0*cosR+tx*0*1+1*0+0*0+tx*1*0  1*cosR+0*sinR+tx*0*0+1*-sinR+0*cosR+tx*0*0+1*0+0*0+tx*1*1 ]
+  [ 0*cosR+1*sinR+ty*0*1+0*-sinR+1*cosR+ty*0*B+0*0+1*0+ty*1*0  0*cosR+1*sinR+ty*0*A+0*-sinR+1*cosR+ty*0*1+0*0+1*0+ty*1*0  0*cosR+1*sinR+ty*0*0+0*-sinR+1*cosR+ty*0*0+0*0+1*0+ty*1*1 ]
+  [ 0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*B+0*1+0*0+1*1*0  0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*1+0*1+0*0+1*1*0  0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*0+0*1+0*0+1*1*1 ]
+
+
+TSR =
+  [ 1*Sx+0*0+tx*0*cosR+1*0+0*Sy+tx*0*sinR+1*0+0*0+tx*1*0  1*Sx+0*0+tx*0*-sinR+1*0+0*Sy+tx*0*cosR+1*0+0*0+tx*1*0  1*Sx+0*0+tx*0*0+1*0+0*Sy+tx*0*0+1*0+0*0+tx*1*1 ]
+  [ 0*Sx+1*0+ty*0*cosR+0*0+1*Sy+ty*0*sinR+0*0+1*0+ty*1*0  0*Sx+1*0+ty*0*-sinR+0*0+1*Sy+ty*0*cosR+0*0+1*0+ty*1*0  0*Sx+1*0+ty*0*0+0*0+1*Sy+ty*0*0+0*0+1*0+ty*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*Sy+1*0*sinR+0*1+0*0+1*1*0  0*0+0*0+1*0*0+0*0+0*Sy+1*0*cosR+0*1+0*0+1*1*0  0*0+0*0+1*0*1+0*0+0*Sy+1*0*0+0*1+0*0+1*1*1 ]
+
+
+TSH =
+  [ 1*Sx+0*0+tx*0*1+1*0+0*Sy+tx*0*B+1*0+0*0+tx*1*0  1*Sx+0*0+tx*0*A+1*0+0*Sy+tx*0*1+1*0+0*0+tx*1*0  1*Sx+0*0+tx*0*0+1*0+0*Sy+tx*0*0+1*0+0*0+tx*1*1 ]
+  [ 0*Sx+1*0+ty*0*1+0*0+1*Sy+ty*0*B+0*0+1*0+ty*1*0  0*Sx+1*0+ty*0*A+0*0+1*Sy+ty*0*1+0*0+1*0+ty*1*0  0*Sx+1*0+ty*0*0+0*0+1*Sy+ty*0*0+0*0+1*0+ty*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*Sy+1*0*B+0*1+0*0+1*1*0  0*0+0*0+1*0*0+0*0+0*Sy+1*0*1+0*1+0*0+1*1*0  0*0+0*0+1*0*1+0*0+0*Sy+1*0*0+0*1+0*0+1*1*1 ]
+
+
+THR =
+  [ 1*1+0*B+tx*0*cosR+1*A+0*1+tx*0*sinR+1*0+0*0+tx*1*0  1*1+0*B+tx*0*-sinR+1*A+0*1+tx*0*cosR+1*0+0*0+tx*1*0  1*1+0*B+tx*0*0+1*A+0*1+tx*0*0+1*0+0*0+tx*1*1 ]
+  [ 0*1+1*B+ty*0*cosR+0*A+1*1+ty*0*sinR+0*0+1*0+ty*1*0  0*1+1*B+ty*0*-sinR+0*A+1*1+ty*0*cosR+0*0+1*0+ty*1*0  0*1+1*B+ty*0*0+0*A+1*1+ty*0*0+0*0+1*0+ty*1*1 ]
+  [ 0*0+0*B+1*0*0+0*0+0*1+1*0*sinR+0*1+0*0+1*1*0  0*0+0*B+1*0*0+0*0+0*1+1*0*cosR+0*1+0*0+1*1*0  0*0+0*B+1*0*1+0*0+0*1+1*0*0+0*1+0*0+1*1*1 ]
+
+
+THS =
+  [ 1*1+0*B+tx*0*Sx+1*A+0*1+tx*0*0+1*0+0*0+tx*1*0  1*1+0*B+tx*0*0+1*A+0*1+tx*0*Sy+1*0+0*0+tx*1*0  1*1+0*B+tx*0*0+1*A+0*1+tx*0*0+1*0+0*0+tx*1*1 ]
+  [ 0*1+1*B+ty*0*Sx+0*A+1*1+ty*0*0+0*0+1*0+ty*1*0  0*1+1*B+ty*0*0+0*A+1*1+ty*0*Sy+0*0+1*0+ty*1*0  0*1+1*B+ty*0*0+0*A+1*1+ty*0*0+0*0+1*0+ty*1*1 ]
+  [ 0*0+0*B+1*0*0+0*0+0*1+1*0*0+0*1+0*0+1*1*0  0*0+0*B+1*0*0+0*0+0*1+1*0*Sy+0*1+0*0+1*1*0  0*0+0*B+1*0*1+0*0+0*1+1*0*0+0*1+0*0+1*1*1 ]
+
+
+RTS =
+  [ cosR*1+-sinR*0+0*0*Sx+cosR*0+-sinR*1+0*0*0+cosR*tx+-sinR*ty+0*1*0  cosR*1+-sinR*0+0*0*0+cosR*0+-sinR*1+0*0*Sy+cosR*tx+-sinR*ty+0*1*0  cosR*1+-sinR*0+0*0*0+cosR*0+-sinR*1+0*0*0+cosR*tx+-sinR*ty+0*1*1 ]
+  [ sinR*1+cosR*0+0*0*Sx+sinR*0+cosR*1+0*0*0+sinR*tx+cosR*ty+0*1*0  sinR*1+cosR*0+0*0*0+sinR*0+cosR*1+0*0*Sy+sinR*tx+cosR*ty+0*1*0  sinR*1+cosR*0+0*0*0+sinR*0+cosR*1+0*0*0+sinR*tx+cosR*ty+0*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*1+1*0*0+0*1+0*ty+1*1*0  0*0+0*0+1*0*0+0*0+0*1+1*0*Sy+0*1+0*ty+1*1*0  0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1 ]
+
+
+RTH =
+  [ cosR*1+-sinR*0+0*0*1+cosR*0+-sinR*1+0*0*B+cosR*tx+-sinR*ty+0*1*0  cosR*1+-sinR*0+0*0*A+cosR*0+-sinR*1+0*0*1+cosR*tx+-sinR*ty+0*1*0  cosR*1+-sinR*0+0*0*0+cosR*0+-sinR*1+0*0*0+cosR*tx+-sinR*ty+0*1*1 ]
+  [ sinR*1+cosR*0+0*0*1+sinR*0+cosR*1+0*0*B+sinR*tx+cosR*ty+0*1*0  sinR*1+cosR*0+0*0*A+sinR*0+cosR*1+0*0*1+sinR*tx+cosR*ty+0*1*0  sinR*1+cosR*0+0*0*0+sinR*0+cosR*1+0*0*0+sinR*tx+cosR*ty+0*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*1+1*0*B+0*1+0*ty+1*1*0  0*0+0*0+1*0*0+0*0+0*1+1*0*1+0*1+0*ty+1*1*0  0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1 ]
+
+
+RST =
+  [ cosR*Sx+-sinR*0+0*0*1+cosR*0+-sinR*Sy+0*0*0+cosR*0+-sinR*0+0*1*0  cosR*Sx+-sinR*0+0*0*0+cosR*0+-sinR*Sy+0*0*1+cosR*0+-sinR*0+0*1*0  cosR*Sx+-sinR*0+0*0*tx+cosR*0+-sinR*Sy+0*0*ty+cosR*0+-sinR*0+0*1*1 ]
+  [ sinR*Sx+cosR*0+0*0*1+sinR*0+cosR*Sy+0*0*0+sinR*0+cosR*0+0*1*0  sinR*Sx+cosR*0+0*0*0+sinR*0+cosR*Sy+0*0*1+sinR*0+cosR*0+0*1*0  sinR*Sx+cosR*0+0*0*tx+sinR*0+cosR*Sy+0*0*ty+sinR*0+cosR*0+0*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*Sy+1*0*0+0*1+0*0+1*1*0  0*0+0*0+1*0*0+0*0+0*Sy+1*0*1+0*1+0*0+1*1*0  0*0+0*0+1*0*1+0*0+0*Sy+1*0*ty+0*1+0*0+1*1*1 ]
+
+
+RSH =
+  [ cosR*Sx+-sinR*0+0*0*1+cosR*0+-sinR*Sy+0*0*B+cosR*0+-sinR*0+0*1*0  cosR*Sx+-sinR*0+0*0*A+cosR*0+-sinR*Sy+0*0*1+cosR*0+-sinR*0+0*1*0  cosR*Sx+-sinR*0+0*0*0+cosR*0+-sinR*Sy+0*0*0+cosR*0+-sinR*0+0*1*1 ]
+  [ sinR*Sx+cosR*0+0*0*1+sinR*0+cosR*Sy+0*0*B+sinR*0+cosR*0+0*1*0  sinR*Sx+cosR*0+0*0*A+sinR*0+cosR*Sy+0*0*1+sinR*0+cosR*0+0*1*0  sinR*Sx+cosR*0+0*0*0+sinR*0+cosR*Sy+0*0*0+sinR*0+cosR*0+0*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*Sy+1*0*B+0*1+0*0+1*1*0  0*0+0*0+1*0*0+0*0+0*Sy+1*0*1+0*1+0*0+1*1*0  0*0+0*0+1*0*1+0*0+0*Sy+1*0*0+0*1+0*0+1*1*1 ]
+
+
+RHS =
+  [ cosR*1+-sinR*B+0*0*Sx+cosR*A+-sinR*1+0*0*0+cosR*0+-sinR*0+0*1*0  cosR*1+-sinR*B+0*0*0+cosR*A+-sinR*1+0*0*Sy+cosR*0+-sinR*0+0*1*0  cosR*1+-sinR*B+0*0*0+cosR*A+-sinR*1+0*0*0+cosR*0+-sinR*0+0*1*1 ]
+  [ sinR*1+cosR*B+0*0*Sx+sinR*A+cosR*1+0*0*0+sinR*0+cosR*0+0*1*0  sinR*1+cosR*B+0*0*0+sinR*A+cosR*1+0*0*Sy+sinR*0+cosR*0+0*1*0  sinR*1+cosR*B+0*0*0+sinR*A+cosR*1+0*0*0+sinR*0+cosR*0+0*1*1 ]
+  [ 0*0+0*B+1*0*0+0*0+0*1+1*0*0+0*1+0*0+1*1*0  0*0+0*B+1*0*0+0*0+0*1+1*0*Sy+0*1+0*0+1*1*0  0*0+0*B+1*0*1+0*0+0*1+1*0*0+0*1+0*0+1*1*1 ]
+
+
+RHT =
+  [ cosR*1+-sinR*B+0*0*1+cosR*A+-sinR*1+0*0*0+cosR*0+-sinR*0+0*1*0  cosR*1+-sinR*B+0*0*0+cosR*A+-sinR*1+0*0*1+cosR*0+-sinR*0+0*1*0  cosR*1+-sinR*B+0*0*tx+cosR*A+-sinR*1+0*0*ty+cosR*0+-sinR*0+0*1*1 ]
+  [ sinR*1+cosR*B+0*0*1+sinR*A+cosR*1+0*0*0+sinR*0+cosR*0+0*1*0  sinR*1+cosR*B+0*0*0+sinR*A+cosR*1+0*0*1+sinR*0+cosR*0+0*1*0  sinR*1+cosR*B+0*0*tx+sinR*A+cosR*1+0*0*ty+sinR*0+cosR*0+0*1*1 ]
+  [ 0*0+0*B+1*0*0+0*0+0*1+1*0*0+0*1+0*0+1*1*0  0*0+0*B+1*0*0+0*0+0*1+1*0*1+0*1+0*0+1*1*0  0*0+0*B+1*0*1+0*0+0*1+1*0*ty+0*1+0*0+1*1*1 ]
+
+
+HTS =
+  [ 1*1+A*0+0*0*Sx+1*0+A*1+0*0*0+1*tx+A*ty+0*1*0  1*1+A*0+0*0*0+1*0+A*1+0*0*Sy+1*tx+A*ty+0*1*0  1*1+A*0+0*0*0+1*0+A*1+0*0*0+1*tx+A*ty+0*1*1 ]
+  [ B*1+1*0+0*0*Sx+B*0+1*1+0*0*0+B*tx+1*ty+0*1*0  B*1+1*0+0*0*0+B*0+1*1+0*0*Sy+B*tx+1*ty+0*1*0  B*1+1*0+0*0*0+B*0+1*1+0*0*0+B*tx+1*ty+0*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*1+1*0*0+0*1+0*ty+1*1*0  0*0+0*0+1*0*0+0*0+0*1+1*0*Sy+0*1+0*ty+1*1*0  0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1 ]
+
+
+HTR =
+  [ 1*1+A*0+0*0*cosR+1*0+A*1+0*0*sinR+1*tx+A*ty+0*1*0  1*1+A*0+0*0*-sinR+1*0+A*1+0*0*cosR+1*tx+A*ty+0*1*0  1*1+A*0+0*0*0+1*0+A*1+0*0*0+1*tx+A*ty+0*1*1 ]
+  [ B*1+1*0+0*0*cosR+B*0+1*1+0*0*sinR+B*tx+1*ty+0*1*0  B*1+1*0+0*0*-sinR+B*0+1*1+0*0*cosR+B*tx+1*ty+0*1*0  B*1+1*0+0*0*0+B*0+1*1+0*0*0+B*tx+1*ty+0*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*1+1*0*sinR+0*1+0*ty+1*1*0  0*0+0*0+1*0*0+0*0+0*1+1*0*cosR+0*1+0*ty+1*1*0  0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1 ]
+
+
+HSR =
+  [ 1*Sx+A*0+0*0*cosR+1*0+A*Sy+0*0*sinR+1*0+A*0+0*1*0  1*Sx+A*0+0*0*-sinR+1*0+A*Sy+0*0*cosR+1*0+A*0+0*1*0  1*Sx+A*0+0*0*0+1*0+A*Sy+0*0*0+1*0+A*0+0*1*1 ]
+  [ B*Sx+1*0+0*0*cosR+B*0+1*Sy+0*0*sinR+B*0+1*0+0*1*0  B*Sx+1*0+0*0*-sinR+B*0+1*Sy+0*0*cosR+B*0+1*0+0*1*0  B*Sx+1*0+0*0*0+B*0+1*Sy+0*0*0+B*0+1*0+0*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*Sy+1*0*sinR+0*1+0*0+1*1*0  0*0+0*0+1*0*0+0*0+0*Sy+1*0*cosR+0*1+0*0+1*1*0  0*0+0*0+1*0*1+0*0+0*Sy+1*0*0+0*1+0*0+1*1*1 ]
+
+
+HST =
+  [ 1*Sx+A*0+0*0*1+1*0+A*Sy+0*0*0+1*0+A*0+0*1*0  1*Sx+A*0+0*0*0+1*0+A*Sy+0*0*1+1*0+A*0+0*1*0  1*Sx+A*0+0*0*tx+1*0+A*Sy+0*0*ty+1*0+A*0+0*1*1 ]
+  [ B*Sx+1*0+0*0*1+B*0+1*Sy+0*0*0+B*0+1*0+0*1*0  B*Sx+1*0+0*0*0+B*0+1*Sy+0*0*1+B*0+1*0+0*1*0  B*Sx+1*0+0*0*tx+B*0+1*Sy+0*0*ty+B*0+1*0+0*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*Sy+1*0*0+0*1+0*0+1*1*0  0*0+0*0+1*0*0+0*0+0*Sy+1*0*1+0*1+0*0+1*1*0  0*0+0*0+1*0*1+0*0+0*Sy+1*0*ty+0*1+0*0+1*1*1 ]
+
+
+HRS =
+  [ 1*cosR+A*sinR+0*0*Sx+1*-sinR+A*cosR+0*0*0+1*0+A*0+0*1*0  1*cosR+A*sinR+0*0*0+1*-sinR+A*cosR+0*0*Sy+1*0+A*0+0*1*0  1*cosR+A*sinR+0*0*0+1*-sinR+A*cosR+0*0*0+1*0+A*0+0*1*1 ]
+  [ B*cosR+1*sinR+0*0*Sx+B*-sinR+1*cosR+0*0*0+B*0+1*0+0*1*0  B*cosR+1*sinR+0*0*0+B*-sinR+1*cosR+0*0*Sy+B*0+1*0+0*1*0  B*cosR+1*sinR+0*0*0+B*-sinR+1*cosR+0*0*0+B*0+1*0+0*1*1 ]
+  [ 0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*0+0*1+0*0+1*1*0  0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*Sy+0*1+0*0+1*1*0  0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*0+0*1+0*0+1*1*1 ]
+
+
+HRT =
+  [ 1*cosR+A*sinR+0*0*1+1*-sinR+A*cosR+0*0*0+1*0+A*0+0*1*0  1*cosR+A*sinR+0*0*0+1*-sinR+A*cosR+0*0*1+1*0+A*0+0*1*0  1*cosR+A*sinR+0*0*tx+1*-sinR+A*cosR+0*0*ty+1*0+A*0+0*1*1 ]
+  [ B*cosR+1*sinR+0*0*1+B*-sinR+1*cosR+0*0*0+B*0+1*0+0*1*0  B*cosR+1*sinR+0*0*0+B*-sinR+1*cosR+0*0*1+B*0+1*0+0*1*0  B*cosR+1*sinR+0*0*tx+B*-sinR+1*cosR+0*0*ty+B*0+1*0+0*1*1 ]
+  [ 0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*0+0*1+0*0+1*1*0  0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*1+0*1+0*0+1*1*0  0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*ty+0*1+0*0+1*1*1 ]
+
+--------------------------------------------------------------------------------
+ x4 permutations
+--------------------------------------------------------------------------------
+
+HSTR =
+  [ 1*Sx+A*0+0*0*1+1*0+A*Sy+0*0*0+1*0+A*0+0*1*0*cosR+1*Sx+A*0+0*0*0+1*0+A*Sy+0*0*1+1*0+A*0+0*1*0*sinR+1*Sx+A*0+0*0*tx+1*0+A*Sy+0*0*ty+1*0+A*0+0*1*1*0  1*Sx+A*0+0*0*1+1*0+A*Sy+0*0*0+1*0+A*0+0*1*0*-sinR+1*Sx+A*0+0*0*0+1*0+A*Sy+0*0*1+1*0+A*0+0*1*0*cosR+1*Sx+A*0+0*0*tx+1*0+A*Sy+0*0*ty+1*0+A*0+0*1*1*0  1*Sx+A*0+0*0*1+1*0+A*Sy+0*0*0+1*0+A*0+0*1*0*0+1*Sx+A*0+0*0*0+1*0+A*Sy+0*0*1+1*0+A*0+0*1*0*0+1*Sx+A*0+0*0*tx+1*0+A*Sy+0*0*ty+1*0+A*0+0*1*1*1 ]
+  [ B*Sx+1*0+0*0*1+B*0+1*Sy+0*0*0+B*0+1*0+0*1*0*cosR+B*Sx+1*0+0*0*0+B*0+1*Sy+0*0*1+B*0+1*0+0*1*0*sinR+B*Sx+1*0+0*0*tx+B*0+1*Sy+0*0*ty+B*0+1*0+0*1*1*0  B*Sx+1*0+0*0*1+B*0+1*Sy+0*0*0+B*0+1*0+0*1*0*-sinR+B*Sx+1*0+0*0*0+B*0+1*Sy+0*0*1+B*0+1*0+0*1*0*cosR+B*Sx+1*0+0*0*tx+B*0+1*Sy+0*0*ty+B*0+1*0+0*1*1*0  B*Sx+1*0+0*0*1+B*0+1*Sy+0*0*0+B*0+1*0+0*1*0*0+B*Sx+1*0+0*0*0+B*0+1*Sy+0*0*1+B*0+1*0+0*1*0*0+B*Sx+1*0+0*0*tx+B*0+1*Sy+0*0*ty+B*0+1*0+0*1*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*Sy+1*0*0+0*1+0*0+1*1*0*0+0*0+0*0+1*0*0+0*0+0*Sy+1*0*1+0*1+0*0+1*1*0*sinR+0*0+0*0+1*0*1+0*0+0*Sy+1*0*ty+0*1+0*0+1*1*1*0  0*0+0*0+1*0*0+0*0+0*Sy+1*0*0+0*1+0*0+1*1*0*0+0*0+0*0+1*0*0+0*0+0*Sy+1*0*1+0*1+0*0+1*1*0*cosR+0*0+0*0+1*0*1+0*0+0*Sy+1*0*ty+0*1+0*0+1*1*1*0  0*0+0*0+1*0*0+0*0+0*Sy+1*0*0+0*1+0*0+1*1*0*1+0*0+0*0+1*0*0+0*0+0*Sy+1*0*1+0*1+0*0+1*1*0*0+0*0+0*0+1*0*1+0*0+0*Sy+1*0*ty+0*1+0*0+1*1*1*1 ]
+
+
+HTSR =
+  [ 1*1+A*0+0*0*Sx+1*0+A*1+0*0*0+1*tx+A*ty+0*1*0*cosR+1*1+A*0+0*0*0+1*0+A*1+0*0*Sy+1*tx+A*ty+0*1*0*sinR+1*1+A*0+0*0*0+1*0+A*1+0*0*0+1*tx+A*ty+0*1*1*0  1*1+A*0+0*0*Sx+1*0+A*1+0*0*0+1*tx+A*ty+0*1*0*-sinR+1*1+A*0+0*0*0+1*0+A*1+0*0*Sy+1*tx+A*ty+0*1*0*cosR+1*1+A*0+0*0*0+1*0+A*1+0*0*0+1*tx+A*ty+0*1*1*0  1*1+A*0+0*0*Sx+1*0+A*1+0*0*0+1*tx+A*ty+0*1*0*0+1*1+A*0+0*0*0+1*0+A*1+0*0*Sy+1*tx+A*ty+0*1*0*0+1*1+A*0+0*0*0+1*0+A*1+0*0*0+1*tx+A*ty+0*1*1*1 ]
+  [ B*1+1*0+0*0*Sx+B*0+1*1+0*0*0+B*tx+1*ty+0*1*0*cosR+B*1+1*0+0*0*0+B*0+1*1+0*0*Sy+B*tx+1*ty+0*1*0*sinR+B*1+1*0+0*0*0+B*0+1*1+0*0*0+B*tx+1*ty+0*1*1*0  B*1+1*0+0*0*Sx+B*0+1*1+0*0*0+B*tx+1*ty+0*1*0*-sinR+B*1+1*0+0*0*0+B*0+1*1+0*0*Sy+B*tx+1*ty+0*1*0*cosR+B*1+1*0+0*0*0+B*0+1*1+0*0*0+B*tx+1*ty+0*1*1*0  B*1+1*0+0*0*Sx+B*0+1*1+0*0*0+B*tx+1*ty+0*1*0*0+B*1+1*0+0*0*0+B*0+1*1+0*0*Sy+B*tx+1*ty+0*1*0*0+B*1+1*0+0*0*0+B*0+1*1+0*0*0+B*tx+1*ty+0*1*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*1+1*0*0+0*1+0*ty+1*1*0*0+0*0+0*0+1*0*0+0*0+0*1+1*0*Sy+0*1+0*ty+1*1*0*sinR+0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1*0  0*0+0*0+1*0*0+0*0+0*1+1*0*0+0*1+0*ty+1*1*0*0+0*0+0*0+1*0*0+0*0+0*1+1*0*Sy+0*1+0*ty+1*1*0*cosR+0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1*0  0*0+0*0+1*0*0+0*0+0*1+1*0*0+0*1+0*ty+1*1*0*1+0*0+0*0+1*0*0+0*0+0*1+1*0*Sy+0*1+0*ty+1*1*0*0+0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1*1 ]
+
+
+HTRS =
+  [ 1*1+A*0+0*0*cosR+1*0+A*1+0*0*sinR+1*tx+A*ty+0*1*0*Sx+1*1+A*0+0*0*-sinR+1*0+A*1+0*0*cosR+1*tx+A*ty+0*1*0*0+1*1+A*0+0*0*0+1*0+A*1+0*0*0+1*tx+A*ty+0*1*1*0  1*1+A*0+0*0*cosR+1*0+A*1+0*0*sinR+1*tx+A*ty+0*1*0*0+1*1+A*0+0*0*-sinR+1*0+A*1+0*0*cosR+1*tx+A*ty+0*1*0*Sy+1*1+A*0+0*0*0+1*0+A*1+0*0*0+1*tx+A*ty+0*1*1*0  1*1+A*0+0*0*cosR+1*0+A*1+0*0*sinR+1*tx+A*ty+0*1*0*0+1*1+A*0+0*0*-sinR+1*0+A*1+0*0*cosR+1*tx+A*ty+0*1*0*0+1*1+A*0+0*0*0+1*0+A*1+0*0*0+1*tx+A*ty+0*1*1*1 ]
+  [ B*1+1*0+0*0*cosR+B*0+1*1+0*0*sinR+B*tx+1*ty+0*1*0*Sx+B*1+1*0+0*0*-sinR+B*0+1*1+0*0*cosR+B*tx+1*ty+0*1*0*0+B*1+1*0+0*0*0+B*0+1*1+0*0*0+B*tx+1*ty+0*1*1*0  B*1+1*0+0*0*cosR+B*0+1*1+0*0*sinR+B*tx+1*ty+0*1*0*0+B*1+1*0+0*0*-sinR+B*0+1*1+0*0*cosR+B*tx+1*ty+0*1*0*Sy+B*1+1*0+0*0*0+B*0+1*1+0*0*0+B*tx+1*ty+0*1*1*0  B*1+1*0+0*0*cosR+B*0+1*1+0*0*sinR+B*tx+1*ty+0*1*0*0+B*1+1*0+0*0*-sinR+B*0+1*1+0*0*cosR+B*tx+1*ty+0*1*0*0+B*1+1*0+0*0*0+B*0+1*1+0*0*0+B*tx+1*ty+0*1*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*1+1*0*sinR+0*1+0*ty+1*1*0*0+0*0+0*0+1*0*0+0*0+0*1+1*0*cosR+0*1+0*ty+1*1*0*0+0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1*0  0*0+0*0+1*0*0+0*0+0*1+1*0*sinR+0*1+0*ty+1*1*0*0+0*0+0*0+1*0*0+0*0+0*1+1*0*cosR+0*1+0*ty+1*1*0*Sy+0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1*0  0*0+0*0+1*0*0+0*0+0*1+1*0*sinR+0*1+0*ty+1*1*0*1+0*0+0*0+1*0*0+0*0+0*1+1*0*cosR+0*1+0*ty+1*1*0*0+0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1*1 ]
+
+
+HSRT =
+  [ 1*Sx+A*0+0*0*cosR+1*0+A*Sy+0*0*sinR+1*0+A*0+0*1*0*1+1*Sx+A*0+0*0*-sinR+1*0+A*Sy+0*0*cosR+1*0+A*0+0*1*0*0+1*Sx+A*0+0*0*0+1*0+A*Sy+0*0*0+1*0+A*0+0*1*1*0  1*Sx+A*0+0*0*cosR+1*0+A*Sy+0*0*sinR+1*0+A*0+0*1*0*0+1*Sx+A*0+0*0*-sinR+1*0+A*Sy+0*0*cosR+1*0+A*0+0*1*0*1+1*Sx+A*0+0*0*0+1*0+A*Sy+0*0*0+1*0+A*0+0*1*1*0  1*Sx+A*0+0*0*cosR+1*0+A*Sy+0*0*sinR+1*0+A*0+0*1*0*tx+1*Sx+A*0+0*0*-sinR+1*0+A*Sy+0*0*cosR+1*0+A*0+0*1*0*ty+1*Sx+A*0+0*0*0+1*0+A*Sy+0*0*0+1*0+A*0+0*1*1*1 ]
+  [ B*Sx+1*0+0*0*cosR+B*0+1*Sy+0*0*sinR+B*0+1*0+0*1*0*1+B*Sx+1*0+0*0*-sinR+B*0+1*Sy+0*0*cosR+B*0+1*0+0*1*0*0+B*Sx+1*0+0*0*0+B*0+1*Sy+0*0*0+B*0+1*0+0*1*1*0  B*Sx+1*0+0*0*cosR+B*0+1*Sy+0*0*sinR+B*0+1*0+0*1*0*0+B*Sx+1*0+0*0*-sinR+B*0+1*Sy+0*0*cosR+B*0+1*0+0*1*0*1+B*Sx+1*0+0*0*0+B*0+1*Sy+0*0*0+B*0+1*0+0*1*1*0  B*Sx+1*0+0*0*cosR+B*0+1*Sy+0*0*sinR+B*0+1*0+0*1*0*tx+B*Sx+1*0+0*0*-sinR+B*0+1*Sy+0*0*cosR+B*0+1*0+0*1*0*ty+B*Sx+1*0+0*0*0+B*0+1*Sy+0*0*0+B*0+1*0+0*1*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*Sy+1*0*sinR+0*1+0*0+1*1*0*0+0*0+0*0+1*0*0+0*0+0*Sy+1*0*cosR+0*1+0*0+1*1*0*0+0*0+0*0+1*0*1+0*0+0*Sy+1*0*0+0*1+0*0+1*1*1*0  0*0+0*0+1*0*0+0*0+0*Sy+1*0*sinR+0*1+0*0+1*1*0*0+0*0+0*0+1*0*0+0*0+0*Sy+1*0*cosR+0*1+0*0+1*1*0*1+0*0+0*0+1*0*1+0*0+0*Sy+1*0*0+0*1+0*0+1*1*1*0  0*0+0*0+1*0*0+0*0+0*Sy+1*0*sinR+0*1+0*0+1*1*0*1+0*0+0*0+1*0*0+0*0+0*Sy+1*0*cosR+0*1+0*0+1*1*0*ty+0*0+0*0+1*0*1+0*0+0*Sy+1*0*0+0*1+0*0+1*1*1*1 ]
+
+
+HRST =
+  [ 1*cosR+A*sinR+0*0*Sx+1*-sinR+A*cosR+0*0*0+1*0+A*0+0*1*0*1+1*cosR+A*sinR+0*0*0+1*-sinR+A*cosR+0*0*Sy+1*0+A*0+0*1*0*0+1*cosR+A*sinR+0*0*0+1*-sinR+A*cosR+0*0*0+1*0+A*0+0*1*1*0  1*cosR+A*sinR+0*0*Sx+1*-sinR+A*cosR+0*0*0+1*0+A*0+0*1*0*0+1*cosR+A*sinR+0*0*0+1*-sinR+A*cosR+0*0*Sy+1*0+A*0+0*1*0*1+1*cosR+A*sinR+0*0*0+1*-sinR+A*cosR+0*0*0+1*0+A*0+0*1*1*0  1*cosR+A*sinR+0*0*Sx+1*-sinR+A*cosR+0*0*0+1*0+A*0+0*1*0*tx+1*cosR+A*sinR+0*0*0+1*-sinR+A*cosR+0*0*Sy+1*0+A*0+0*1*0*ty+1*cosR+A*sinR+0*0*0+1*-sinR+A*cosR+0*0*0+1*0+A*0+0*1*1*1 ]
+  [ B*cosR+1*sinR+0*0*Sx+B*-sinR+1*cosR+0*0*0+B*0+1*0+0*1*0*1+B*cosR+1*sinR+0*0*0+B*-sinR+1*cosR+0*0*Sy+B*0+1*0+0*1*0*0+B*cosR+1*sinR+0*0*0+B*-sinR+1*cosR+0*0*0+B*0+1*0+0*1*1*0  B*cosR+1*sinR+0*0*Sx+B*-sinR+1*cosR+0*0*0+B*0+1*0+0*1*0*0+B*cosR+1*sinR+0*0*0+B*-sinR+1*cosR+0*0*Sy+B*0+1*0+0*1*0*1+B*cosR+1*sinR+0*0*0+B*-sinR+1*cosR+0*0*0+B*0+1*0+0*1*1*0  B*cosR+1*sinR+0*0*Sx+B*-sinR+1*cosR+0*0*0+B*0+1*0+0*1*0*tx+B*cosR+1*sinR+0*0*0+B*-sinR+1*cosR+0*0*Sy+B*0+1*0+0*1*0*ty+B*cosR+1*sinR+0*0*0+B*-sinR+1*cosR+0*0*0+B*0+1*0+0*1*1*1 ]
+  [ 0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*0+0*1+0*0+1*1*0*0+0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*Sy+0*1+0*0+1*1*0*0+0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*0+0*1+0*0+1*1*1*0  0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*0+0*1+0*0+1*1*0*0+0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*Sy+0*1+0*0+1*1*0*1+0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*0+0*1+0*0+1*1*1*0  0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*0+0*1+0*0+1*1*0*1+0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*Sy+0*1+0*0+1*1*0*ty+0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*0+0*1+0*0+1*1*1*1 ]
+
+
+HRTS =
+  [ 1*cosR+A*sinR+0*0*1+1*-sinR+A*cosR+0*0*0+1*0+A*0+0*1*0*Sx+1*cosR+A*sinR+0*0*0+1*-sinR+A*cosR+0*0*1+1*0+A*0+0*1*0*0+1*cosR+A*sinR+0*0*tx+1*-sinR+A*cosR+0*0*ty+1*0+A*0+0*1*1*0  1*cosR+A*sinR+0*0*1+1*-sinR+A*cosR+0*0*0+1*0+A*0+0*1*0*0+1*cosR+A*sinR+0*0*0+1*-sinR+A*cosR+0*0*1+1*0+A*0+0*1*0*Sy+1*cosR+A*sinR+0*0*tx+1*-sinR+A*cosR+0*0*ty+1*0+A*0+0*1*1*0  1*cosR+A*sinR+0*0*1+1*-sinR+A*cosR+0*0*0+1*0+A*0+0*1*0*0+1*cosR+A*sinR+0*0*0+1*-sinR+A*cosR+0*0*1+1*0+A*0+0*1*0*0+1*cosR+A*sinR+0*0*tx+1*-sinR+A*cosR+0*0*ty+1*0+A*0+0*1*1*1 ]
+  [ B*cosR+1*sinR+0*0*1+B*-sinR+1*cosR+0*0*0+B*0+1*0+0*1*0*Sx+B*cosR+1*sinR+0*0*0+B*-sinR+1*cosR+0*0*1+B*0+1*0+0*1*0*0+B*cosR+1*sinR+0*0*tx+B*-sinR+1*cosR+0*0*ty+B*0+1*0+0*1*1*0  B*cosR+1*sinR+0*0*1+B*-sinR+1*cosR+0*0*0+B*0+1*0+0*1*0*0+B*cosR+1*sinR+0*0*0+B*-sinR+1*cosR+0*0*1+B*0+1*0+0*1*0*Sy+B*cosR+1*sinR+0*0*tx+B*-sinR+1*cosR+0*0*ty+B*0+1*0+0*1*1*0  B*cosR+1*sinR+0*0*1+B*-sinR+1*cosR+0*0*0+B*0+1*0+0*1*0*0+B*cosR+1*sinR+0*0*0+B*-sinR+1*cosR+0*0*1+B*0+1*0+0*1*0*0+B*cosR+1*sinR+0*0*tx+B*-sinR+1*cosR+0*0*ty+B*0+1*0+0*1*1*1 ]
+  [ 0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*0+0*1+0*0+1*1*0*0+0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*1+0*1+0*0+1*1*0*0+0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*ty+0*1+0*0+1*1*1*0  0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*0+0*1+0*0+1*1*0*0+0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*1+0*1+0*0+1*1*0*Sy+0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*ty+0*1+0*0+1*1*1*0  0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*0+0*1+0*0+1*1*0*1+0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*1+0*1+0*0+1*1*0*0+0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*ty+0*1+0*0+1*1*1*1 ]
+
+
+TRSH =
+  [ 1*cosR+0*sinR+tx*0*Sx+1*-sinR+0*cosR+tx*0*0+1*0+0*0+tx*1*0*1+1*cosR+0*sinR+tx*0*0+1*-sinR+0*cosR+tx*0*Sy+1*0+0*0+tx*1*0*B+1*cosR+0*sinR+tx*0*0+1*-sinR+0*cosR+tx*0*0+1*0+0*0+tx*1*1*0  1*cosR+0*sinR+tx*0*Sx+1*-sinR+0*cosR+tx*0*0+1*0+0*0+tx*1*0*A+1*cosR+0*sinR+tx*0*0+1*-sinR+0*cosR+tx*0*Sy+1*0+0*0+tx*1*0*1+1*cosR+0*sinR+tx*0*0+1*-sinR+0*cosR+tx*0*0+1*0+0*0+tx*1*1*0  1*cosR+0*sinR+tx*0*Sx+1*-sinR+0*cosR+tx*0*0+1*0+0*0+tx*1*0*0+1*cosR+0*sinR+tx*0*0+1*-sinR+0*cosR+tx*0*Sy+1*0+0*0+tx*1*0*0+1*cosR+0*sinR+tx*0*0+1*-sinR+0*cosR+tx*0*0+1*0+0*0+tx*1*1*1 ]
+  [ 0*cosR+1*sinR+ty*0*Sx+0*-sinR+1*cosR+ty*0*0+0*0+1*0+ty*1*0*1+0*cosR+1*sinR+ty*0*0+0*-sinR+1*cosR+ty*0*Sy+0*0+1*0+ty*1*0*B+0*cosR+1*sinR+ty*0*0+0*-sinR+1*cosR+ty*0*0+0*0+1*0+ty*1*1*0  0*cosR+1*sinR+ty*0*Sx+0*-sinR+1*cosR+ty*0*0+0*0+1*0+ty*1*0*A+0*cosR+1*sinR+ty*0*0+0*-sinR+1*cosR+ty*0*Sy+0*0+1*0+ty*1*0*1+0*cosR+1*sinR+ty*0*0+0*-sinR+1*cosR+ty*0*0+0*0+1*0+ty*1*1*0  0*cosR+1*sinR+ty*0*Sx+0*-sinR+1*cosR+ty*0*0+0*0+1*0+ty*1*0*0+0*cosR+1*sinR+ty*0*0+0*-sinR+1*cosR+ty*0*Sy+0*0+1*0+ty*1*0*0+0*cosR+1*sinR+ty*0*0+0*-sinR+1*cosR+ty*0*0+0*0+1*0+ty*1*1*1 ]
+  [ 0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*0+0*1+0*0+1*1*0*0+0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*Sy+0*1+0*0+1*1*0*B+0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*0+0*1+0*0+1*1*1*0  0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*0+0*1+0*0+1*1*0*0+0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*Sy+0*1+0*0+1*1*0*1+0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*0+0*1+0*0+1*1*1*0  0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*0+0*1+0*0+1*1*0*1+0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*Sy+0*1+0*0+1*1*0*0+0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*0+0*1+0*0+1*1*1*1 ]
+
+
+TRHS =
+  [ 1*cosR+0*sinR+tx*0*1+1*-sinR+0*cosR+tx*0*B+1*0+0*0+tx*1*0*Sx+1*cosR+0*sinR+tx*0*A+1*-sinR+0*cosR+tx*0*1+1*0+0*0+tx*1*0*0+1*cosR+0*sinR+tx*0*0+1*-sinR+0*cosR+tx*0*0+1*0+0*0+tx*1*1*0  1*cosR+0*sinR+tx*0*1+1*-sinR+0*cosR+tx*0*B+1*0+0*0+tx*1*0*0+1*cosR+0*sinR+tx*0*A+1*-sinR+0*cosR+tx*0*1+1*0+0*0+tx*1*0*Sy+1*cosR+0*sinR+tx*0*0+1*-sinR+0*cosR+tx*0*0+1*0+0*0+tx*1*1*0  1*cosR+0*sinR+tx*0*1+1*-sinR+0*cosR+tx*0*B+1*0+0*0+tx*1*0*0+1*cosR+0*sinR+tx*0*A+1*-sinR+0*cosR+tx*0*1+1*0+0*0+tx*1*0*0+1*cosR+0*sinR+tx*0*0+1*-sinR+0*cosR+tx*0*0+1*0+0*0+tx*1*1*1 ]
+  [ 0*cosR+1*sinR+ty*0*1+0*-sinR+1*cosR+ty*0*B+0*0+1*0+ty*1*0*Sx+0*cosR+1*sinR+ty*0*A+0*-sinR+1*cosR+ty*0*1+0*0+1*0+ty*1*0*0+0*cosR+1*sinR+ty*0*0+0*-sinR+1*cosR+ty*0*0+0*0+1*0+ty*1*1*0  0*cosR+1*sinR+ty*0*1+0*-sinR+1*cosR+ty*0*B+0*0+1*0+ty*1*0*0+0*cosR+1*sinR+ty*0*A+0*-sinR+1*cosR+ty*0*1+0*0+1*0+ty*1*0*Sy+0*cosR+1*sinR+ty*0*0+0*-sinR+1*cosR+ty*0*0+0*0+1*0+ty*1*1*0  0*cosR+1*sinR+ty*0*1+0*-sinR+1*cosR+ty*0*B+0*0+1*0+ty*1*0*0+0*cosR+1*sinR+ty*0*A+0*-sinR+1*cosR+ty*0*1+0*0+1*0+ty*1*0*0+0*cosR+1*sinR+ty*0*0+0*-sinR+1*cosR+ty*0*0+0*0+1*0+ty*1*1*1 ]
+  [ 0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*B+0*1+0*0+1*1*0*0+0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*1+0*1+0*0+1*1*0*0+0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*0+0*1+0*0+1*1*1*0  0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*B+0*1+0*0+1*1*0*0+0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*1+0*1+0*0+1*1*0*Sy+0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*0+0*1+0*0+1*1*1*0  0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*B+0*1+0*0+1*1*0*1+0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*1+0*1+0*0+1*1*0*0+0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*0+0*1+0*0+1*1*1*1 ]
+
+
+TSRH =
+  [ 1*Sx+0*0+tx*0*cosR+1*0+0*Sy+tx*0*sinR+1*0+0*0+tx*1*0*1+1*Sx+0*0+tx*0*-sinR+1*0+0*Sy+tx*0*cosR+1*0+0*0+tx*1*0*B+1*Sx+0*0+tx*0*0+1*0+0*Sy+tx*0*0+1*0+0*0+tx*1*1*0  1*Sx+0*0+tx*0*cosR+1*0+0*Sy+tx*0*sinR+1*0+0*0+tx*1*0*A+1*Sx+0*0+tx*0*-sinR+1*0+0*Sy+tx*0*cosR+1*0+0*0+tx*1*0*1+1*Sx+0*0+tx*0*0+1*0+0*Sy+tx*0*0+1*0+0*0+tx*1*1*0  1*Sx+0*0+tx*0*cosR+1*0+0*Sy+tx*0*sinR+1*0+0*0+tx*1*0*0+1*Sx+0*0+tx*0*-sinR+1*0+0*Sy+tx*0*cosR+1*0+0*0+tx*1*0*0+1*Sx+0*0+tx*0*0+1*0+0*Sy+tx*0*0+1*0+0*0+tx*1*1*1 ]
+  [ 0*Sx+1*0+ty*0*cosR+0*0+1*Sy+ty*0*sinR+0*0+1*0+ty*1*0*1+0*Sx+1*0+ty*0*-sinR+0*0+1*Sy+ty*0*cosR+0*0+1*0+ty*1*0*B+0*Sx+1*0+ty*0*0+0*0+1*Sy+ty*0*0+0*0+1*0+ty*1*1*0  0*Sx+1*0+ty*0*cosR+0*0+1*Sy+ty*0*sinR+0*0+1*0+ty*1*0*A+0*Sx+1*0+ty*0*-sinR+0*0+1*Sy+ty*0*cosR+0*0+1*0+ty*1*0*1+0*Sx+1*0+ty*0*0+0*0+1*Sy+ty*0*0+0*0+1*0+ty*1*1*0  0*Sx+1*0+ty*0*cosR+0*0+1*Sy+ty*0*sinR+0*0+1*0+ty*1*0*0+0*Sx+1*0+ty*0*-sinR+0*0+1*Sy+ty*0*cosR+0*0+1*0+ty*1*0*0+0*Sx+1*0+ty*0*0+0*0+1*Sy+ty*0*0+0*0+1*0+ty*1*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*Sy+1*0*sinR+0*1+0*0+1*1*0*0+0*0+0*0+1*0*0+0*0+0*Sy+1*0*cosR+0*1+0*0+1*1*0*B+0*0+0*0+1*0*1+0*0+0*Sy+1*0*0+0*1+0*0+1*1*1*0  0*0+0*0+1*0*0+0*0+0*Sy+1*0*sinR+0*1+0*0+1*1*0*0+0*0+0*0+1*0*0+0*0+0*Sy+1*0*cosR+0*1+0*0+1*1*0*1+0*0+0*0+1*0*1+0*0+0*Sy+1*0*0+0*1+0*0+1*1*1*0  0*0+0*0+1*0*0+0*0+0*Sy+1*0*sinR+0*1+0*0+1*1*0*1+0*0+0*0+1*0*0+0*0+0*Sy+1*0*cosR+0*1+0*0+1*1*0*0+0*0+0*0+1*0*1+0*0+0*Sy+1*0*0+0*1+0*0+1*1*1*1 ]
+
+
+TSHR =
+  [ 1*Sx+0*0+tx*0*1+1*0+0*Sy+tx*0*B+1*0+0*0+tx*1*0*cosR+1*Sx+0*0+tx*0*A+1*0+0*Sy+tx*0*1+1*0+0*0+tx*1*0*sinR+1*Sx+0*0+tx*0*0+1*0+0*Sy+tx*0*0+1*0+0*0+tx*1*1*0  1*Sx+0*0+tx*0*1+1*0+0*Sy+tx*0*B+1*0+0*0+tx*1*0*-sinR+1*Sx+0*0+tx*0*A+1*0+0*Sy+tx*0*1+1*0+0*0+tx*1*0*cosR+1*Sx+0*0+tx*0*0+1*0+0*Sy+tx*0*0+1*0+0*0+tx*1*1*0  1*Sx+0*0+tx*0*1+1*0+0*Sy+tx*0*B+1*0+0*0+tx*1*0*0+1*Sx+0*0+tx*0*A+1*0+0*Sy+tx*0*1+1*0+0*0+tx*1*0*0+1*Sx+0*0+tx*0*0+1*0+0*Sy+tx*0*0+1*0+0*0+tx*1*1*1 ]
+  [ 0*Sx+1*0+ty*0*1+0*0+1*Sy+ty*0*B+0*0+1*0+ty*1*0*cosR+0*Sx+1*0+ty*0*A+0*0+1*Sy+ty*0*1+0*0+1*0+ty*1*0*sinR+0*Sx+1*0+ty*0*0+0*0+1*Sy+ty*0*0+0*0+1*0+ty*1*1*0  0*Sx+1*0+ty*0*1+0*0+1*Sy+ty*0*B+0*0+1*0+ty*1*0*-sinR+0*Sx+1*0+ty*0*A+0*0+1*Sy+ty*0*1+0*0+1*0+ty*1*0*cosR+0*Sx+1*0+ty*0*0+0*0+1*Sy+ty*0*0+0*0+1*0+ty*1*1*0  0*Sx+1*0+ty*0*1+0*0+1*Sy+ty*0*B+0*0+1*0+ty*1*0*0+0*Sx+1*0+ty*0*A+0*0+1*Sy+ty*0*1+0*0+1*0+ty*1*0*0+0*Sx+1*0+ty*0*0+0*0+1*Sy+ty*0*0+0*0+1*0+ty*1*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*Sy+1*0*B+0*1+0*0+1*1*0*0+0*0+0*0+1*0*0+0*0+0*Sy+1*0*1+0*1+0*0+1*1*0*sinR+0*0+0*0+1*0*1+0*0+0*Sy+1*0*0+0*1+0*0+1*1*1*0  0*0+0*0+1*0*0+0*0+0*Sy+1*0*B+0*1+0*0+1*1*0*0+0*0+0*0+1*0*0+0*0+0*Sy+1*0*1+0*1+0*0+1*1*0*cosR+0*0+0*0+1*0*1+0*0+0*Sy+1*0*0+0*1+0*0+1*1*1*0  0*0+0*0+1*0*0+0*0+0*Sy+1*0*B+0*1+0*0+1*1*0*1+0*0+0*0+1*0*0+0*0+0*Sy+1*0*1+0*1+0*0+1*1*0*0+0*0+0*0+1*0*1+0*0+0*Sy+1*0*0+0*1+0*0+1*1*1*1 ]
+
+
+THRS =
+  [ 1*1+0*B+tx*0*cosR+1*A+0*1+tx*0*sinR+1*0+0*0+tx*1*0*Sx+1*1+0*B+tx*0*-sinR+1*A+0*1+tx*0*cosR+1*0+0*0+tx*1*0*0+1*1+0*B+tx*0*0+1*A+0*1+tx*0*0+1*0+0*0+tx*1*1*0  1*1+0*B+tx*0*cosR+1*A+0*1+tx*0*sinR+1*0+0*0+tx*1*0*0+1*1+0*B+tx*0*-sinR+1*A+0*1+tx*0*cosR+1*0+0*0+tx*1*0*Sy+1*1+0*B+tx*0*0+1*A+0*1+tx*0*0+1*0+0*0+tx*1*1*0  1*1+0*B+tx*0*cosR+1*A+0*1+tx*0*sinR+1*0+0*0+tx*1*0*0+1*1+0*B+tx*0*-sinR+1*A+0*1+tx*0*cosR+1*0+0*0+tx*1*0*0+1*1+0*B+tx*0*0+1*A+0*1+tx*0*0+1*0+0*0+tx*1*1*1 ]
+  [ 0*1+1*B+ty*0*cosR+0*A+1*1+ty*0*sinR+0*0+1*0+ty*1*0*Sx+0*1+1*B+ty*0*-sinR+0*A+1*1+ty*0*cosR+0*0+1*0+ty*1*0*0+0*1+1*B+ty*0*0+0*A+1*1+ty*0*0+0*0+1*0+ty*1*1*0  0*1+1*B+ty*0*cosR+0*A+1*1+ty*0*sinR+0*0+1*0+ty*1*0*0+0*1+1*B+ty*0*-sinR+0*A+1*1+ty*0*cosR+0*0+1*0+ty*1*0*Sy+0*1+1*B+ty*0*0+0*A+1*1+ty*0*0+0*0+1*0+ty*1*1*0  0*1+1*B+ty*0*cosR+0*A+1*1+ty*0*sinR+0*0+1*0+ty*1*0*0+0*1+1*B+ty*0*-sinR+0*A+1*1+ty*0*cosR+0*0+1*0+ty*1*0*0+0*1+1*B+ty*0*0+0*A+1*1+ty*0*0+0*0+1*0+ty*1*1*1 ]
+  [ 0*0+0*B+1*0*0+0*0+0*1+1*0*sinR+0*1+0*0+1*1*0*0+0*0+0*B+1*0*0+0*0+0*1+1*0*cosR+0*1+0*0+1*1*0*0+0*0+0*B+1*0*1+0*0+0*1+1*0*0+0*1+0*0+1*1*1*0  0*0+0*B+1*0*0+0*0+0*1+1*0*sinR+0*1+0*0+1*1*0*0+0*0+0*B+1*0*0+0*0+0*1+1*0*cosR+0*1+0*0+1*1*0*Sy+0*0+0*B+1*0*1+0*0+0*1+1*0*0+0*1+0*0+1*1*1*0  0*0+0*B+1*0*0+0*0+0*1+1*0*sinR+0*1+0*0+1*1*0*1+0*0+0*B+1*0*0+0*0+0*1+1*0*cosR+0*1+0*0+1*1*0*0+0*0+0*B+1*0*1+0*0+0*1+1*0*0+0*1+0*0+1*1*1*1 ]
+
+
+THSR =
+  [ 1*1+0*B+tx*0*Sx+1*A+0*1+tx*0*0+1*0+0*0+tx*1*0*cosR+1*1+0*B+tx*0*0+1*A+0*1+tx*0*Sy+1*0+0*0+tx*1*0*sinR+1*1+0*B+tx*0*0+1*A+0*1+tx*0*0+1*0+0*0+tx*1*1*0  1*1+0*B+tx*0*Sx+1*A+0*1+tx*0*0+1*0+0*0+tx*1*0*-sinR+1*1+0*B+tx*0*0+1*A+0*1+tx*0*Sy+1*0+0*0+tx*1*0*cosR+1*1+0*B+tx*0*0+1*A+0*1+tx*0*0+1*0+0*0+tx*1*1*0  1*1+0*B+tx*0*Sx+1*A+0*1+tx*0*0+1*0+0*0+tx*1*0*0+1*1+0*B+tx*0*0+1*A+0*1+tx*0*Sy+1*0+0*0+tx*1*0*0+1*1+0*B+tx*0*0+1*A+0*1+tx*0*0+1*0+0*0+tx*1*1*1 ]
+  [ 0*1+1*B+ty*0*Sx+0*A+1*1+ty*0*0+0*0+1*0+ty*1*0*cosR+0*1+1*B+ty*0*0+0*A+1*1+ty*0*Sy+0*0+1*0+ty*1*0*sinR+0*1+1*B+ty*0*0+0*A+1*1+ty*0*0+0*0+1*0+ty*1*1*0  0*1+1*B+ty*0*Sx+0*A+1*1+ty*0*0+0*0+1*0+ty*1*0*-sinR+0*1+1*B+ty*0*0+0*A+1*1+ty*0*Sy+0*0+1*0+ty*1*0*cosR+0*1+1*B+ty*0*0+0*A+1*1+ty*0*0+0*0+1*0+ty*1*1*0  0*1+1*B+ty*0*Sx+0*A+1*1+ty*0*0+0*0+1*0+ty*1*0*0+0*1+1*B+ty*0*0+0*A+1*1+ty*0*Sy+0*0+1*0+ty*1*0*0+0*1+1*B+ty*0*0+0*A+1*1+ty*0*0+0*0+1*0+ty*1*1*1 ]
+  [ 0*0+0*B+1*0*0+0*0+0*1+1*0*0+0*1+0*0+1*1*0*0+0*0+0*B+1*0*0+0*0+0*1+1*0*Sy+0*1+0*0+1*1*0*sinR+0*0+0*B+1*0*1+0*0+0*1+1*0*0+0*1+0*0+1*1*1*0  0*0+0*B+1*0*0+0*0+0*1+1*0*0+0*1+0*0+1*1*0*0+0*0+0*B+1*0*0+0*0+0*1+1*0*Sy+0*1+0*0+1*1*0*cosR+0*0+0*B+1*0*1+0*0+0*1+1*0*0+0*1+0*0+1*1*1*0  0*0+0*B+1*0*0+0*0+0*1+1*0*0+0*1+0*0+1*1*0*1+0*0+0*B+1*0*0+0*0+0*1+1*0*Sy+0*1+0*0+1*1*0*0+0*0+0*B+1*0*1+0*0+0*1+1*0*0+0*1+0*0+1*1*1*1 ]
+
+
+RTSH =
+  [ cosR*1+-sinR*0+0*0*Sx+cosR*0+-sinR*1+0*0*0+cosR*tx+-sinR*ty+0*1*0*1+cosR*1+-sinR*0+0*0*0+cosR*0+-sinR*1+0*0*Sy+cosR*tx+-sinR*ty+0*1*0*B+cosR*1+-sinR*0+0*0*0+cosR*0+-sinR*1+0*0*0+cosR*tx+-sinR*ty+0*1*1*0  cosR*1+-sinR*0+0*0*Sx+cosR*0+-sinR*1+0*0*0+cosR*tx+-sinR*ty+0*1*0*A+cosR*1+-sinR*0+0*0*0+cosR*0+-sinR*1+0*0*Sy+cosR*tx+-sinR*ty+0*1*0*1+cosR*1+-sinR*0+0*0*0+cosR*0+-sinR*1+0*0*0+cosR*tx+-sinR*ty+0*1*1*0  cosR*1+-sinR*0+0*0*Sx+cosR*0+-sinR*1+0*0*0+cosR*tx+-sinR*ty+0*1*0*0+cosR*1+-sinR*0+0*0*0+cosR*0+-sinR*1+0*0*Sy+cosR*tx+-sinR*ty+0*1*0*0+cosR*1+-sinR*0+0*0*0+cosR*0+-sinR*1+0*0*0+cosR*tx+-sinR*ty+0*1*1*1 ]
+  [ sinR*1+cosR*0+0*0*Sx+sinR*0+cosR*1+0*0*0+sinR*tx+cosR*ty+0*1*0*1+sinR*1+cosR*0+0*0*0+sinR*0+cosR*1+0*0*Sy+sinR*tx+cosR*ty+0*1*0*B+sinR*1+cosR*0+0*0*0+sinR*0+cosR*1+0*0*0+sinR*tx+cosR*ty+0*1*1*0  sinR*1+cosR*0+0*0*Sx+sinR*0+cosR*1+0*0*0+sinR*tx+cosR*ty+0*1*0*A+sinR*1+cosR*0+0*0*0+sinR*0+cosR*1+0*0*Sy+sinR*tx+cosR*ty+0*1*0*1+sinR*1+cosR*0+0*0*0+sinR*0+cosR*1+0*0*0+sinR*tx+cosR*ty+0*1*1*0  sinR*1+cosR*0+0*0*Sx+sinR*0+cosR*1+0*0*0+sinR*tx+cosR*ty+0*1*0*0+sinR*1+cosR*0+0*0*0+sinR*0+cosR*1+0*0*Sy+sinR*tx+cosR*ty+0*1*0*0+sinR*1+cosR*0+0*0*0+sinR*0+cosR*1+0*0*0+sinR*tx+cosR*ty+0*1*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*1+1*0*0+0*1+0*ty+1*1*0*0+0*0+0*0+1*0*0+0*0+0*1+1*0*Sy+0*1+0*ty+1*1*0*B+0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1*0  0*0+0*0+1*0*0+0*0+0*1+1*0*0+0*1+0*ty+1*1*0*0+0*0+0*0+1*0*0+0*0+0*1+1*0*Sy+0*1+0*ty+1*1*0*1+0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1*0  0*0+0*0+1*0*0+0*0+0*1+1*0*0+0*1+0*ty+1*1*0*1+0*0+0*0+1*0*0+0*0+0*1+1*0*Sy+0*1+0*ty+1*1*0*0+0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1*1 ]
+
+
+RTHS =
+  [ cosR*1+-sinR*0+0*0*1+cosR*0+-sinR*1+0*0*B+cosR*tx+-sinR*ty+0*1*0*Sx+cosR*1+-sinR*0+0*0*A+cosR*0+-sinR*1+0*0*1+cosR*tx+-sinR*ty+0*1*0*0+cosR*1+-sinR*0+0*0*0+cosR*0+-sinR*1+0*0*0+cosR*tx+-sinR*ty+0*1*1*0  cosR*1+-sinR*0+0*0*1+cosR*0+-sinR*1+0*0*B+cosR*tx+-sinR*ty+0*1*0*0+cosR*1+-sinR*0+0*0*A+cosR*0+-sinR*1+0*0*1+cosR*tx+-sinR*ty+0*1*0*Sy+cosR*1+-sinR*0+0*0*0+cosR*0+-sinR*1+0*0*0+cosR*tx+-sinR*ty+0*1*1*0  cosR*1+-sinR*0+0*0*1+cosR*0+-sinR*1+0*0*B+cosR*tx+-sinR*ty+0*1*0*0+cosR*1+-sinR*0+0*0*A+cosR*0+-sinR*1+0*0*1+cosR*tx+-sinR*ty+0*1*0*0+cosR*1+-sinR*0+0*0*0+cosR*0+-sinR*1+0*0*0+cosR*tx+-sinR*ty+0*1*1*1 ]
+  [ sinR*1+cosR*0+0*0*1+sinR*0+cosR*1+0*0*B+sinR*tx+cosR*ty+0*1*0*Sx+sinR*1+cosR*0+0*0*A+sinR*0+cosR*1+0*0*1+sinR*tx+cosR*ty+0*1*0*0+sinR*1+cosR*0+0*0*0+sinR*0+cosR*1+0*0*0+sinR*tx+cosR*ty+0*1*1*0  sinR*1+cosR*0+0*0*1+sinR*0+cosR*1+0*0*B+sinR*tx+cosR*ty+0*1*0*0+sinR*1+cosR*0+0*0*A+sinR*0+cosR*1+0*0*1+sinR*tx+cosR*ty+0*1*0*Sy+sinR*1+cosR*0+0*0*0+sinR*0+cosR*1+0*0*0+sinR*tx+cosR*ty+0*1*1*0  sinR*1+cosR*0+0*0*1+sinR*0+cosR*1+0*0*B+sinR*tx+cosR*ty+0*1*0*0+sinR*1+cosR*0+0*0*A+sinR*0+cosR*1+0*0*1+sinR*tx+cosR*ty+0*1*0*0+sinR*1+cosR*0+0*0*0+sinR*0+cosR*1+0*0*0+sinR*tx+cosR*ty+0*1*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*1+1*0*B+0*1+0*ty+1*1*0*0+0*0+0*0+1*0*0+0*0+0*1+1*0*1+0*1+0*ty+1*1*0*0+0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1*0  0*0+0*0+1*0*0+0*0+0*1+1*0*B+0*1+0*ty+1*1*0*0+0*0+0*0+1*0*0+0*0+0*1+1*0*1+0*1+0*ty+1*1*0*Sy+0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1*0  0*0+0*0+1*0*0+0*0+0*1+1*0*B+0*1+0*ty+1*1*0*1+0*0+0*0+1*0*0+0*0+0*1+1*0*1+0*1+0*ty+1*1*0*0+0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1*1 ]
+
+
+RSTH =
+  [ cosR*Sx+-sinR*0+0*0*1+cosR*0+-sinR*Sy+0*0*0+cosR*0+-sinR*0+0*1*0*1+cosR*Sx+-sinR*0+0*0*0+cosR*0+-sinR*Sy+0*0*1+cosR*0+-sinR*0+0*1*0*B+cosR*Sx+-sinR*0+0*0*tx+cosR*0+-sinR*Sy+0*0*ty+cosR*0+-sinR*0+0*1*1*0  cosR*Sx+-sinR*0+0*0*1+cosR*0+-sinR*Sy+0*0*0+cosR*0+-sinR*0+0*1*0*A+cosR*Sx+-sinR*0+0*0*0+cosR*0+-sinR*Sy+0*0*1+cosR*0+-sinR*0+0*1*0*1+cosR*Sx+-sinR*0+0*0*tx+cosR*0+-sinR*Sy+0*0*ty+cosR*0+-sinR*0+0*1*1*0  cosR*Sx+-sinR*0+0*0*1+cosR*0+-sinR*Sy+0*0*0+cosR*0+-sinR*0+0*1*0*0+cosR*Sx+-sinR*0+0*0*0+cosR*0+-sinR*Sy+0*0*1+cosR*0+-sinR*0+0*1*0*0+cosR*Sx+-sinR*0+0*0*tx+cosR*0+-sinR*Sy+0*0*ty+cosR*0+-sinR*0+0*1*1*1 ]
+  [ sinR*Sx+cosR*0+0*0*1+sinR*0+cosR*Sy+0*0*0+sinR*0+cosR*0+0*1*0*1+sinR*Sx+cosR*0+0*0*0+sinR*0+cosR*Sy+0*0*1+sinR*0+cosR*0+0*1*0*B+sinR*Sx+cosR*0+0*0*tx+sinR*0+cosR*Sy+0*0*ty+sinR*0+cosR*0+0*1*1*0  sinR*Sx+cosR*0+0*0*1+sinR*0+cosR*Sy+0*0*0+sinR*0+cosR*0+0*1*0*A+sinR*Sx+cosR*0+0*0*0+sinR*0+cosR*Sy+0*0*1+sinR*0+cosR*0+0*1*0*1+sinR*Sx+cosR*0+0*0*tx+sinR*0+cosR*Sy+0*0*ty+sinR*0+cosR*0+0*1*1*0  sinR*Sx+cosR*0+0*0*1+sinR*0+cosR*Sy+0*0*0+sinR*0+cosR*0+0*1*0*0+sinR*Sx+cosR*0+0*0*0+sinR*0+cosR*Sy+0*0*1+sinR*0+cosR*0+0*1*0*0+sinR*Sx+cosR*0+0*0*tx+sinR*0+cosR*Sy+0*0*ty+sinR*0+cosR*0+0*1*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*Sy+1*0*0+0*1+0*0+1*1*0*0+0*0+0*0+1*0*0+0*0+0*Sy+1*0*1+0*1+0*0+1*1*0*B+0*0+0*0+1*0*1+0*0+0*Sy+1*0*ty+0*1+0*0+1*1*1*0  0*0+0*0+1*0*0+0*0+0*Sy+1*0*0+0*1+0*0+1*1*0*0+0*0+0*0+1*0*0+0*0+0*Sy+1*0*1+0*1+0*0+1*1*0*1+0*0+0*0+1*0*1+0*0+0*Sy+1*0*ty+0*1+0*0+1*1*1*0  0*0+0*0+1*0*0+0*0+0*Sy+1*0*0+0*1+0*0+1*1*0*1+0*0+0*0+1*0*0+0*0+0*Sy+1*0*1+0*1+0*0+1*1*0*0+0*0+0*0+1*0*1+0*0+0*Sy+1*0*ty+0*1+0*0+1*1*1*1 ]
+
+
+RSHT =
+  [ cosR*Sx+-sinR*0+0*0*1+cosR*0+-sinR*Sy+0*0*B+cosR*0+-sinR*0+0*1*0*1+cosR*Sx+-sinR*0+0*0*A+cosR*0+-sinR*Sy+0*0*1+cosR*0+-sinR*0+0*1*0*0+cosR*Sx+-sinR*0+0*0*0+cosR*0+-sinR*Sy+0*0*0+cosR*0+-sinR*0+0*1*1*0  cosR*Sx+-sinR*0+0*0*1+cosR*0+-sinR*Sy+0*0*B+cosR*0+-sinR*0+0*1*0*0+cosR*Sx+-sinR*0+0*0*A+cosR*0+-sinR*Sy+0*0*1+cosR*0+-sinR*0+0*1*0*1+cosR*Sx+-sinR*0+0*0*0+cosR*0+-sinR*Sy+0*0*0+cosR*0+-sinR*0+0*1*1*0  cosR*Sx+-sinR*0+0*0*1+cosR*0+-sinR*Sy+0*0*B+cosR*0+-sinR*0+0*1*0*tx+cosR*Sx+-sinR*0+0*0*A+cosR*0+-sinR*Sy+0*0*1+cosR*0+-sinR*0+0*1*0*ty+cosR*Sx+-sinR*0+0*0*0+cosR*0+-sinR*Sy+0*0*0+cosR*0+-sinR*0+0*1*1*1 ]
+  [ sinR*Sx+cosR*0+0*0*1+sinR*0+cosR*Sy+0*0*B+sinR*0+cosR*0+0*1*0*1+sinR*Sx+cosR*0+0*0*A+sinR*0+cosR*Sy+0*0*1+sinR*0+cosR*0+0*1*0*0+sinR*Sx+cosR*0+0*0*0+sinR*0+cosR*Sy+0*0*0+sinR*0+cosR*0+0*1*1*0  sinR*Sx+cosR*0+0*0*1+sinR*0+cosR*Sy+0*0*B+sinR*0+cosR*0+0*1*0*0+sinR*Sx+cosR*0+0*0*A+sinR*0+cosR*Sy+0*0*1+sinR*0+cosR*0+0*1*0*1+sinR*Sx+cosR*0+0*0*0+sinR*0+cosR*Sy+0*0*0+sinR*0+cosR*0+0*1*1*0  sinR*Sx+cosR*0+0*0*1+sinR*0+cosR*Sy+0*0*B+sinR*0+cosR*0+0*1*0*tx+sinR*Sx+cosR*0+0*0*A+sinR*0+cosR*Sy+0*0*1+sinR*0+cosR*0+0*1*0*ty+sinR*Sx+cosR*0+0*0*0+sinR*0+cosR*Sy+0*0*0+sinR*0+cosR*0+0*1*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*Sy+1*0*B+0*1+0*0+1*1*0*0+0*0+0*0+1*0*0+0*0+0*Sy+1*0*1+0*1+0*0+1*1*0*0+0*0+0*0+1*0*1+0*0+0*Sy+1*0*0+0*1+0*0+1*1*1*0  0*0+0*0+1*0*0+0*0+0*Sy+1*0*B+0*1+0*0+1*1*0*0+0*0+0*0+1*0*0+0*0+0*Sy+1*0*1+0*1+0*0+1*1*0*1+0*0+0*0+1*0*1+0*0+0*Sy+1*0*0+0*1+0*0+1*1*1*0  0*0+0*0+1*0*0+0*0+0*Sy+1*0*B+0*1+0*0+1*1*0*1+0*0+0*0+1*0*0+0*0+0*Sy+1*0*1+0*1+0*0+1*1*0*ty+0*0+0*0+1*0*1+0*0+0*Sy+1*0*0+0*1+0*0+1*1*1*1 ]
+
+
+RHST =
+  [ cosR*1+-sinR*B+0*0*Sx+cosR*A+-sinR*1+0*0*0+cosR*0+-sinR*0+0*1*0*1+cosR*1+-sinR*B+0*0*0+cosR*A+-sinR*1+0*0*Sy+cosR*0+-sinR*0+0*1*0*0+cosR*1+-sinR*B+0*0*0+cosR*A+-sinR*1+0*0*0+cosR*0+-sinR*0+0*1*1*0  cosR*1+-sinR*B+0*0*Sx+cosR*A+-sinR*1+0*0*0+cosR*0+-sinR*0+0*1*0*0+cosR*1+-sinR*B+0*0*0+cosR*A+-sinR*1+0*0*Sy+cosR*0+-sinR*0+0*1*0*1+cosR*1+-sinR*B+0*0*0+cosR*A+-sinR*1+0*0*0+cosR*0+-sinR*0+0*1*1*0  cosR*1+-sinR*B+0*0*Sx+cosR*A+-sinR*1+0*0*0+cosR*0+-sinR*0+0*1*0*tx+cosR*1+-sinR*B+0*0*0+cosR*A+-sinR*1+0*0*Sy+cosR*0+-sinR*0+0*1*0*ty+cosR*1+-sinR*B+0*0*0+cosR*A+-sinR*1+0*0*0+cosR*0+-sinR*0+0*1*1*1 ]
+  [ sinR*1+cosR*B+0*0*Sx+sinR*A+cosR*1+0*0*0+sinR*0+cosR*0+0*1*0*1+sinR*1+cosR*B+0*0*0+sinR*A+cosR*1+0*0*Sy+sinR*0+cosR*0+0*1*0*0+sinR*1+cosR*B+0*0*0+sinR*A+cosR*1+0*0*0+sinR*0+cosR*0+0*1*1*0  sinR*1+cosR*B+0*0*Sx+sinR*A+cosR*1+0*0*0+sinR*0+cosR*0+0*1*0*0+sinR*1+cosR*B+0*0*0+sinR*A+cosR*1+0*0*Sy+sinR*0+cosR*0+0*1*0*1+sinR*1+cosR*B+0*0*0+sinR*A+cosR*1+0*0*0+sinR*0+cosR*0+0*1*1*0  sinR*1+cosR*B+0*0*Sx+sinR*A+cosR*1+0*0*0+sinR*0+cosR*0+0*1*0*tx+sinR*1+cosR*B+0*0*0+sinR*A+cosR*1+0*0*Sy+sinR*0+cosR*0+0*1*0*ty+sinR*1+cosR*B+0*0*0+sinR*A+cosR*1+0*0*0+sinR*0+cosR*0+0*1*1*1 ]
+  [ 0*0+0*B+1*0*0+0*0+0*1+1*0*0+0*1+0*0+1*1*0*0+0*0+0*B+1*0*0+0*0+0*1+1*0*Sy+0*1+0*0+1*1*0*0+0*0+0*B+1*0*1+0*0+0*1+1*0*0+0*1+0*0+1*1*1*0  0*0+0*B+1*0*0+0*0+0*1+1*0*0+0*1+0*0+1*1*0*0+0*0+0*B+1*0*0+0*0+0*1+1*0*Sy+0*1+0*0+1*1*0*1+0*0+0*B+1*0*1+0*0+0*1+1*0*0+0*1+0*0+1*1*1*0  0*0+0*B+1*0*0+0*0+0*1+1*0*0+0*1+0*0+1*1*0*1+0*0+0*B+1*0*0+0*0+0*1+1*0*Sy+0*1+0*0+1*1*0*ty+0*0+0*B+1*0*1+0*0+0*1+1*0*0+0*1+0*0+1*1*1*1 ]
+
+
+RHTS =
+  [ cosR*1+-sinR*B+0*0*1+cosR*A+-sinR*1+0*0*0+cosR*0+-sinR*0+0*1*0*Sx+cosR*1+-sinR*B+0*0*0+cosR*A+-sinR*1+0*0*1+cosR*0+-sinR*0+0*1*0*0+cosR*1+-sinR*B+0*0*tx+cosR*A+-sinR*1+0*0*ty+cosR*0+-sinR*0+0*1*1*0  cosR*1+-sinR*B+0*0*1+cosR*A+-sinR*1+0*0*0+cosR*0+-sinR*0+0*1*0*0+cosR*1+-sinR*B+0*0*0+cosR*A+-sinR*1+0*0*1+cosR*0+-sinR*0+0*1*0*Sy+cosR*1+-sinR*B+0*0*tx+cosR*A+-sinR*1+0*0*ty+cosR*0+-sinR*0+0*1*1*0  cosR*1+-sinR*B+0*0*1+cosR*A+-sinR*1+0*0*0+cosR*0+-sinR*0+0*1*0*0+cosR*1+-sinR*B+0*0*0+cosR*A+-sinR*1+0*0*1+cosR*0+-sinR*0+0*1*0*0+cosR*1+-sinR*B+0*0*tx+cosR*A+-sinR*1+0*0*ty+cosR*0+-sinR*0+0*1*1*1 ]
+  [ sinR*1+cosR*B+0*0*1+sinR*A+cosR*1+0*0*0+sinR*0+cosR*0+0*1*0*Sx+sinR*1+cosR*B+0*0*0+sinR*A+cosR*1+0*0*1+sinR*0+cosR*0+0*1*0*0+sinR*1+cosR*B+0*0*tx+sinR*A+cosR*1+0*0*ty+sinR*0+cosR*0+0*1*1*0  sinR*1+cosR*B+0*0*1+sinR*A+cosR*1+0*0*0+sinR*0+cosR*0+0*1*0*0+sinR*1+cosR*B+0*0*0+sinR*A+cosR*1+0*0*1+sinR*0+cosR*0+0*1*0*Sy+sinR*1+cosR*B+0*0*tx+sinR*A+cosR*1+0*0*ty+sinR*0+cosR*0+0*1*1*0  sinR*1+cosR*B+0*0*1+sinR*A+cosR*1+0*0*0+sinR*0+cosR*0+0*1*0*0+sinR*1+cosR*B+0*0*0+sinR*A+cosR*1+0*0*1+sinR*0+cosR*0+0*1*0*0+sinR*1+cosR*B+0*0*tx+sinR*A+cosR*1+0*0*ty+sinR*0+cosR*0+0*1*1*1 ]
+  [ 0*0+0*B+1*0*0+0*0+0*1+1*0*0+0*1+0*0+1*1*0*0+0*0+0*B+1*0*0+0*0+0*1+1*0*1+0*1+0*0+1*1*0*0+0*0+0*B+1*0*1+0*0+0*1+1*0*ty+0*1+0*0+1*1*1*0  0*0+0*B+1*0*0+0*0+0*1+1*0*0+0*1+0*0+1*1*0*0+0*0+0*B+1*0*0+0*0+0*1+1*0*1+0*1+0*0+1*1*0*Sy+0*0+0*B+1*0*1+0*0+0*1+1*0*ty+0*1+0*0+1*1*1*0  0*0+0*B+1*0*0+0*0+0*1+1*0*0+0*1+0*0+1*1*0*1+0*0+0*B+1*0*0+0*0+0*1+1*0*1+0*1+0*0+1*1*0*0+0*0+0*B+1*0*1+0*0+0*1+1*0*ty+0*1+0*0+1*1*1*1 ]
+
+
+STHR =
+  [ Sx*1+0*0+0*0*1+Sx*0+0*1+0*0*B+Sx*tx+0*ty+0*1*0*cosR+Sx*1+0*0+0*0*A+Sx*0+0*1+0*0*1+Sx*tx+0*ty+0*1*0*sinR+Sx*1+0*0+0*0*0+Sx*0+0*1+0*0*0+Sx*tx+0*ty+0*1*1*0  Sx*1+0*0+0*0*1+Sx*0+0*1+0*0*B+Sx*tx+0*ty+0*1*0*-sinR+Sx*1+0*0+0*0*A+Sx*0+0*1+0*0*1+Sx*tx+0*ty+0*1*0*cosR+Sx*1+0*0+0*0*0+Sx*0+0*1+0*0*0+Sx*tx+0*ty+0*1*1*0  Sx*1+0*0+0*0*1+Sx*0+0*1+0*0*B+Sx*tx+0*ty+0*1*0*0+Sx*1+0*0+0*0*A+Sx*0+0*1+0*0*1+Sx*tx+0*ty+0*1*0*0+Sx*1+0*0+0*0*0+Sx*0+0*1+0*0*0+Sx*tx+0*ty+0*1*1*1 ]
+  [ 0*1+Sy*0+0*0*1+0*0+Sy*1+0*0*B+0*tx+Sy*ty+0*1*0*cosR+0*1+Sy*0+0*0*A+0*0+Sy*1+0*0*1+0*tx+Sy*ty+0*1*0*sinR+0*1+Sy*0+0*0*0+0*0+Sy*1+0*0*0+0*tx+Sy*ty+0*1*1*0  0*1+Sy*0+0*0*1+0*0+Sy*1+0*0*B+0*tx+Sy*ty+0*1*0*-sinR+0*1+Sy*0+0*0*A+0*0+Sy*1+0*0*1+0*tx+Sy*ty+0*1*0*cosR+0*1+Sy*0+0*0*0+0*0+Sy*1+0*0*0+0*tx+Sy*ty+0*1*1*0  0*1+Sy*0+0*0*1+0*0+Sy*1+0*0*B+0*tx+Sy*ty+0*1*0*0+0*1+Sy*0+0*0*A+0*0+Sy*1+0*0*1+0*tx+Sy*ty+0*1*0*0+0*1+Sy*0+0*0*0+0*0+Sy*1+0*0*0+0*tx+Sy*ty+0*1*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*1+1*0*B+0*1+0*ty+1*1*0*0+0*0+0*0+1*0*0+0*0+0*1+1*0*1+0*1+0*ty+1*1*0*sinR+0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1*0  0*0+0*0+1*0*0+0*0+0*1+1*0*B+0*1+0*ty+1*1*0*0+0*0+0*0+1*0*0+0*0+0*1+1*0*1+0*1+0*ty+1*1*0*cosR+0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1*0  0*0+0*0+1*0*0+0*0+0*1+1*0*B+0*1+0*ty+1*1*0*1+0*0+0*0+1*0*0+0*0+0*1+1*0*1+0*1+0*ty+1*1*0*0+0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1*1 ]
+
+
+STRH =
+  [ Sx*1+0*0+0*0*cosR+Sx*0+0*1+0*0*sinR+Sx*tx+0*ty+0*1*0*1+Sx*1+0*0+0*0*-sinR+Sx*0+0*1+0*0*cosR+Sx*tx+0*ty+0*1*0*B+Sx*1+0*0+0*0*0+Sx*0+0*1+0*0*0+Sx*tx+0*ty+0*1*1*0  Sx*1+0*0+0*0*cosR+Sx*0+0*1+0*0*sinR+Sx*tx+0*ty+0*1*0*A+Sx*1+0*0+0*0*-sinR+Sx*0+0*1+0*0*cosR+Sx*tx+0*ty+0*1*0*1+Sx*1+0*0+0*0*0+Sx*0+0*1+0*0*0+Sx*tx+0*ty+0*1*1*0  Sx*1+0*0+0*0*cosR+Sx*0+0*1+0*0*sinR+Sx*tx+0*ty+0*1*0*0+Sx*1+0*0+0*0*-sinR+Sx*0+0*1+0*0*cosR+Sx*tx+0*ty+0*1*0*0+Sx*1+0*0+0*0*0+Sx*0+0*1+0*0*0+Sx*tx+0*ty+0*1*1*1 ]
+  [ 0*1+Sy*0+0*0*cosR+0*0+Sy*1+0*0*sinR+0*tx+Sy*ty+0*1*0*1+0*1+Sy*0+0*0*-sinR+0*0+Sy*1+0*0*cosR+0*tx+Sy*ty+0*1*0*B+0*1+Sy*0+0*0*0+0*0+Sy*1+0*0*0+0*tx+Sy*ty+0*1*1*0  0*1+Sy*0+0*0*cosR+0*0+Sy*1+0*0*sinR+0*tx+Sy*ty+0*1*0*A+0*1+Sy*0+0*0*-sinR+0*0+Sy*1+0*0*cosR+0*tx+Sy*ty+0*1*0*1+0*1+Sy*0+0*0*0+0*0+Sy*1+0*0*0+0*tx+Sy*ty+0*1*1*0  0*1+Sy*0+0*0*cosR+0*0+Sy*1+0*0*sinR+0*tx+Sy*ty+0*1*0*0+0*1+Sy*0+0*0*-sinR+0*0+Sy*1+0*0*cosR+0*tx+Sy*ty+0*1*0*0+0*1+Sy*0+0*0*0+0*0+Sy*1+0*0*0+0*tx+Sy*ty+0*1*1*1 ]
+  [ 0*0+0*0+1*0*0+0*0+0*1+1*0*sinR+0*1+0*ty+1*1*0*0+0*0+0*0+1*0*0+0*0+0*1+1*0*cosR+0*1+0*ty+1*1*0*B+0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1*0  0*0+0*0+1*0*0+0*0+0*1+1*0*sinR+0*1+0*ty+1*1*0*0+0*0+0*0+1*0*0+0*0+0*1+1*0*cosR+0*1+0*ty+1*1*0*1+0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1*0  0*0+0*0+1*0*0+0*0+0*1+1*0*sinR+0*1+0*ty+1*1*0*1+0*0+0*0+1*0*0+0*0+0*1+1*0*cosR+0*1+0*ty+1*1*0*0+0*0+0*0+1*0*1+0*0+0*1+1*0*0+0*1+0*ty+1*1*1*1 ]
+
+
+SRHT =
+  [ Sx*cosR+0*sinR+0*0*1+Sx*-sinR+0*cosR+0*0*B+Sx*0+0*0+0*1*0*1+Sx*cosR+0*sinR+0*0*A+Sx*-sinR+0*cosR+0*0*1+Sx*0+0*0+0*1*0*0+Sx*cosR+0*sinR+0*0*0+Sx*-sinR+0*cosR+0*0*0+Sx*0+0*0+0*1*1*0  Sx*cosR+0*sinR+0*0*1+Sx*-sinR+0*cosR+0*0*B+Sx*0+0*0+0*1*0*0+Sx*cosR+0*sinR+0*0*A+Sx*-sinR+0*cosR+0*0*1+Sx*0+0*0+0*1*0*1+Sx*cosR+0*sinR+0*0*0+Sx*-sinR+0*cosR+0*0*0+Sx*0+0*0+0*1*1*0  Sx*cosR+0*sinR+0*0*1+Sx*-sinR+0*cosR+0*0*B+Sx*0+0*0+0*1*0*tx+Sx*cosR+0*sinR+0*0*A+Sx*-sinR+0*cosR+0*0*1+Sx*0+0*0+0*1*0*ty+Sx*cosR+0*sinR+0*0*0+Sx*-sinR+0*cosR+0*0*0+Sx*0+0*0+0*1*1*1 ]
+  [ 0*cosR+Sy*sinR+0*0*1+0*-sinR+Sy*cosR+0*0*B+0*0+Sy*0+0*1*0*1+0*cosR+Sy*sinR+0*0*A+0*-sinR+Sy*cosR+0*0*1+0*0+Sy*0+0*1*0*0+0*cosR+Sy*sinR+0*0*0+0*-sinR+Sy*cosR+0*0*0+0*0+Sy*0+0*1*1*0  0*cosR+Sy*sinR+0*0*1+0*-sinR+Sy*cosR+0*0*B+0*0+Sy*0+0*1*0*0+0*cosR+Sy*sinR+0*0*A+0*-sinR+Sy*cosR+0*0*1+0*0+Sy*0+0*1*0*1+0*cosR+Sy*sinR+0*0*0+0*-sinR+Sy*cosR+0*0*0+0*0+Sy*0+0*1*1*0  0*cosR+Sy*sinR+0*0*1+0*-sinR+Sy*cosR+0*0*B+0*0+Sy*0+0*1*0*tx+0*cosR+Sy*sinR+0*0*A+0*-sinR+Sy*cosR+0*0*1+0*0+Sy*0+0*1*0*ty+0*cosR+Sy*sinR+0*0*0+0*-sinR+Sy*cosR+0*0*0+0*0+Sy*0+0*1*1*1 ]
+  [ 0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*B+0*1+0*0+1*1*0*0+0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*1+0*1+0*0+1*1*0*0+0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*0+0*1+0*0+1*1*1*0  0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*B+0*1+0*0+1*1*0*0+0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*1+0*1+0*0+1*1*0*1+0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*0+0*1+0*0+1*1*1*0  0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*B+0*1+0*0+1*1*0*1+0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*1+0*1+0*0+1*1*0*ty+0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*0+0*1+0*0+1*1*1*1 ]
+
+
+SRTH =
+  [ Sx*cosR+0*sinR+0*0*1+Sx*-sinR+0*cosR+0*0*0+Sx*0+0*0+0*1*0*1+Sx*cosR+0*sinR+0*0*0+Sx*-sinR+0*cosR+0*0*1+Sx*0+0*0+0*1*0*B+Sx*cosR+0*sinR+0*0*tx+Sx*-sinR+0*cosR+0*0*ty+Sx*0+0*0+0*1*1*0  Sx*cosR+0*sinR+0*0*1+Sx*-sinR+0*cosR+0*0*0+Sx*0+0*0+0*1*0*A+Sx*cosR+0*sinR+0*0*0+Sx*-sinR+0*cosR+0*0*1+Sx*0+0*0+0*1*0*1+Sx*cosR+0*sinR+0*0*tx+Sx*-sinR+0*cosR+0*0*ty+Sx*0+0*0+0*1*1*0  Sx*cosR+0*sinR+0*0*1+Sx*-sinR+0*cosR+0*0*0+Sx*0+0*0+0*1*0*0+Sx*cosR+0*sinR+0*0*0+Sx*-sinR+0*cosR+0*0*1+Sx*0+0*0+0*1*0*0+Sx*cosR+0*sinR+0*0*tx+Sx*-sinR+0*cosR+0*0*ty+Sx*0+0*0+0*1*1*1 ]
+  [ 0*cosR+Sy*sinR+0*0*1+0*-sinR+Sy*cosR+0*0*0+0*0+Sy*0+0*1*0*1+0*cosR+Sy*sinR+0*0*0+0*-sinR+Sy*cosR+0*0*1+0*0+Sy*0+0*1*0*B+0*cosR+Sy*sinR+0*0*tx+0*-sinR+Sy*cosR+0*0*ty+0*0+Sy*0+0*1*1*0  0*cosR+Sy*sinR+0*0*1+0*-sinR+Sy*cosR+0*0*0+0*0+Sy*0+0*1*0*A+0*cosR+Sy*sinR+0*0*0+0*-sinR+Sy*cosR+0*0*1+0*0+Sy*0+0*1*0*1+0*cosR+Sy*sinR+0*0*tx+0*-sinR+Sy*cosR+0*0*ty+0*0+Sy*0+0*1*1*0  0*cosR+Sy*sinR+0*0*1+0*-sinR+Sy*cosR+0*0*0+0*0+Sy*0+0*1*0*0+0*cosR+Sy*sinR+0*0*0+0*-sinR+Sy*cosR+0*0*1+0*0+Sy*0+0*1*0*0+0*cosR+Sy*sinR+0*0*tx+0*-sinR+Sy*cosR+0*0*ty+0*0+Sy*0+0*1*1*1 ]
+  [ 0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*0+0*1+0*0+1*1*0*0+0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*1+0*1+0*0+1*1*0*B+0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*ty+0*1+0*0+1*1*1*0  0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*0+0*1+0*0+1*1*0*0+0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*1+0*1+0*0+1*1*0*1+0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*ty+0*1+0*0+1*1*1*0  0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*0+0*1+0*0+1*1*0*1+0*0+0*sinR+1*0*0+0*0+0*cosR+1*0*1+0*1+0*0+1*1*0*0+0*0+0*sinR+1*0*1+0*0+0*cosR+1*0*ty+0*1+0*0+1*1*1*1 ]
+
+
+SHTR =
+  [ Sx*1+0*B+0*0*1+Sx*A+0*1+0*0*0+Sx*0+0*0+0*1*0*cosR+Sx*1+0*B+0*0*0+Sx*A+0*1+0*0*1+Sx*0+0*0+0*1*0*sinR+Sx*1+0*B+0*0*tx+Sx*A+0*1+0*0*ty+Sx*0+0*0+0*1*1*0  Sx*1+0*B+0*0*1+Sx*A+0*1+0*0*0+Sx*0+0*0+0*1*0*-sinR+Sx*1+0*B+0*0*0+Sx*A+0*1+0*0*1+Sx*0+0*0+0*1*0*cosR+Sx*1+0*B+0*0*tx+Sx*A+0*1+0*0*ty+Sx*0+0*0+0*1*1*0  Sx*1+0*B+0*0*1+Sx*A+0*1+0*0*0+Sx*0+0*0+0*1*0*0+Sx*1+0*B+0*0*0+Sx*A+0*1+0*0*1+Sx*0+0*0+0*1*0*0+Sx*1+0*B+0*0*tx+Sx*A+0*1+0*0*ty+Sx*0+0*0+0*1*1*1 ]
+  [ 0*1+Sy*B+0*0*1+0*A+Sy*1+0*0*0+0*0+Sy*0+0*1*0*cosR+0*1+Sy*B+0*0*0+0*A+Sy*1+0*0*1+0*0+Sy*0+0*1*0*sinR+0*1+Sy*B+0*0*tx+0*A+Sy*1+0*0*ty+0*0+Sy*0+0*1*1*0  0*1+Sy*B+0*0*1+0*A+Sy*1+0*0*0+0*0+Sy*0+0*1*0*-sinR+0*1+Sy*B+0*0*0+0*A+Sy*1+0*0*1+0*0+Sy*0+0*1*0*cosR+0*1+Sy*B+0*0*tx+0*A+Sy*1+0*0*ty+0*0+Sy*0+0*1*1*0  0*1+Sy*B+0*0*1+0*A+Sy*1+0*0*0+0*0+Sy*0+0*1*0*0+0*1+Sy*B+0*0*0+0*A+Sy*1+0*0*1+0*0+Sy*0+0*1*0*0+0*1+Sy*B+0*0*tx+0*A+Sy*1+0*0*ty+0*0+Sy*0+0*1*1*1 ]
+  [ 0*0+0*B+1*0*0+0*0+0*1+1*0*0+0*1+0*0+1*1*0*0+0*0+0*B+1*0*0+0*0+0*1+1*0*1+0*1+0*0+1*1*0*sinR+0*0+0*B+1*0*1+0*0+0*1+1*0*ty+0*1+0*0+1*1*1*0  0*0+0*B+1*0*0+0*0+0*1+1*0*0+0*1+0*0+1*1*0*0+0*0+0*B+1*0*0+0*0+0*1+1*0*1+0*1+0*0+1*1*0*cosR+0*0+0*B+1*0*1+0*0+0*1+1*0*ty+0*1+0*0+1*1*1*0  0*0+0*B+1*0*0+0*0+0*1+1*0*0+0*1+0*0+1*1*0*1+0*0+0*B+1*0*0+0*0+0*1+1*0*1+0*1+0*0+1*1*0*0+0*0+0*B+1*0*1+0*0+0*1+1*0*ty+0*1+0*0+1*1*1*1 ]
+
+
+SHRT =
+  [ Sx*1+0*B+0*0*cosR+Sx*A+0*1+0*0*sinR+Sx*0+0*0+0*1*0*1+Sx*1+0*B+0*0*-sinR+Sx*A+0*1+0*0*cosR+Sx*0+0*0+0*1*0*0+Sx*1+0*B+0*0*0+Sx*A+0*1+0*0*0+Sx*0+0*0+0*1*1*0  Sx*1+0*B+0*0*cosR+Sx*A+0*1+0*0*sinR+Sx*0+0*0+0*1*0*0+Sx*1+0*B+0*0*-sinR+Sx*A+0*1+0*0*cosR+Sx*0+0*0+0*1*0*1+Sx*1+0*B+0*0*0+Sx*A+0*1+0*0*0+Sx*0+0*0+0*1*1*0  Sx*1+0*B+0*0*cosR+Sx*A+0*1+0*0*sinR+Sx*0+0*0+0*1*0*tx+Sx*1+0*B+0*0*-sinR+Sx*A+0*1+0*0*cosR+Sx*0+0*0+0*1*0*ty+Sx*1+0*B+0*0*0+Sx*A+0*1+0*0*0+Sx*0+0*0+0*1*1*1 ]
+  [ 0*1+Sy*B+0*0*cosR+0*A+Sy*1+0*0*sinR+0*0+Sy*0+0*1*0*1+0*1+Sy*B+0*0*-sinR+0*A+Sy*1+0*0*cosR+0*0+Sy*0+0*1*0*0+0*1+Sy*B+0*0*0+0*A+Sy*1+0*0*0+0*0+Sy*0+0*1*1*0  0*1+Sy*B+0*0*cosR+0*A+Sy*1+0*0*sinR+0*0+Sy*0+0*1*0*0+0*1+Sy*B+0*0*-sinR+0*A+Sy*1+0*0*cosR+0*0+Sy*0+0*1*0*1+0*1+Sy*B+0*0*0+0*A+Sy*1+0*0*0+0*0+Sy*0+0*1*1*0  0*1+Sy*B+0*0*cosR+0*A+Sy*1+0*0*sinR+0*0+Sy*0+0*1*0*tx+0*1+Sy*B+0*0*-sinR+0*A+Sy*1+0*0*cosR+0*0+Sy*0+0*1*0*ty+0*1+Sy*B+0*0*0+0*A+Sy*1+0*0*0+0*0+Sy*0+0*1*1*1 ]
+  [ 0*0+0*B+1*0*0+0*0+0*1+1*0*sinR+0*1+0*0+1*1*0*0+0*0+0*B+1*0*0+0*0+0*1+1*0*cosR+0*1+0*0+1*1*0*0+0*0+0*B+1*0*1+0*0+0*1+1*0*0+0*1+0*0+1*1*1*0  0*0+0*B+1*0*0+0*0+0*1+1*0*sinR+0*1+0*0+1*1*0*0+0*0+0*B+1*0*0+0*0+0*1+1*0*cosR+0*1+0*0+1*1*0*1+0*0+0*B+1*0*1+0*0+0*1+1*0*0+0*1+0*0+1*1*1*0  0*0+0*B+1*0*0+0*0+0*1+1*0*sinR+0*1+0*0+1*1*0*1+0*0+0*B+1*0*0+0*0+0*1+1*0*cosR+0*1+0*0+1*1*0*ty+0*0+0*B+1*0*1+0*0+0*1+1*0*0+0*1+0*0+1*1*1*1 ]
+

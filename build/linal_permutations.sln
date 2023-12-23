@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "linal_permutations", "linal_permutations.vcxproj", "{EF14EEC1-19C2-4FFC-BBAE-48F8D762E885}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74B1AA7D-8DE8-4C77-AFDB-E9C5F262160E}.Debug|x64.ActiveCfg = Debug|x64
+		{74B1AA7D-8DE8-4C77-AFDB-E9C5F262160E}.Debug|x64.Build.0 = Debug|x64
+		{74B1AA7D-8DE8-4C77-AFDB-E9C5F262160E}.Release|x64.ActiveCfg = Release|x64
+		{74B1AA7D-8DE8-4C77-AFDB-E9C5F262160E}.Release|x64.Build.0 = Release|x64
+		{EF14EEC1-19C2-4FFC-BBAE-48F8D762E885}.Debug|x64.ActiveCfg = Debug|x64
+		{EF14EEC1-19C2-4FFC-BBAE-48F8D762E885}.Debug|x64.Build.0 = Debug|x64
+		{EF14EEC1-19C2-4FFC-BBAE-48F8D762E885}.Release|x64.ActiveCfg = Release|x64
+		{EF14EEC1-19C2-4FFC-BBAE-48F8D762E885}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0EAF4857-BE6A-4CF1-8FA9-D51495D296A9}
+	EndGlobalSection
+EndGlobal
