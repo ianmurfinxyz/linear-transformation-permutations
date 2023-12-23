@@ -342,8 +342,8 @@ std::string generate_permutations(bool apply_simplifications) {
     std::regex x_by_zero_regex_no_brackets{R"([\w-]+\*0)"};
     std::regex zero_by_x_regex_no_brackets{R"(0\*[\w-]+)"};
 
-    std::regex x_by_zero_regex_brackets{R"(\([\w+*]+\)\*0)"};
-    std::regex zero_by_x_regex_brackets{R"(0\*\([\w+*]+\))"};
+    std::regex x_by_zero_regex_brackets{R"(\([\w+*-]+\)\*0)"};
+    std::regex zero_by_x_regex_brackets{R"(0\*\([\w+*-]+\))"};
 
     auto strip_matrix_zero_terms = [&] (matrix& m, bool brackets) {
         for (column& c : m) {
@@ -374,8 +374,8 @@ std::string generate_permutations(bool apply_simplifications) {
     std::regex x_by_one_regex_no_brackets{R"(([\w-]+)(\*1))"};
     std::regex one_by_x_regex_no_brackets{R"((1\*)([\w-]+))"};
 
-    std::regex x_by_one_regex_brackets{R"((\([\w+*]+\))(\*1))"};
-    std::regex one_by_x_regex_brackets{R"((1\*)(\([\w+*]+\)))"};
+    std::regex x_by_one_regex_brackets{R"((\([\w+*-]+\))(\*1))"};
+    std::regex one_by_x_regex_brackets{R"((1\*)(\([\w+*-]+\)))"};
 
     auto simplify_matrix_one_terms = [&] (matrix& m, bool brackets) {
         for (column& c : m) {
@@ -410,11 +410,9 @@ std::string generate_permutations(bool apply_simplifications) {
     };
 
     auto simplify_matrix = [&] (matrix& m, bool brackets) {
-        if (apply_simplifications) {
-            strip_matrix_zero_terms(m, brackets);
-            strip_matrix_zero_plus_terms(m);
-            simplify_matrix_one_terms(m, brackets);
-        }
+        strip_matrix_zero_terms(m, brackets);
+        strip_matrix_zero_plus_terms(m);
+        simplify_matrix_one_terms(m, brackets);
     };
 
     print("--------------------------------------------------------------------------------\n");
@@ -435,7 +433,9 @@ std::string generate_permutations(bool apply_simplifications) {
         const matrix& rhs = transforms.at(perm.at(1));
 
         matrix c = mul(lhs, rhs);
-        simplify_matrix(c, false);
+        if (apply_simplifications) {
+            simplify_matrix(c, false);
+        }
         print_matrix(perm, c);
     }
 
@@ -450,15 +450,19 @@ std::string generate_permutations(bool apply_simplifications) {
             const matrix& lhs = transforms.at(perm.at(0));
             const matrix& rhs = transforms.at(perm.at(1));
             c = mul(lhs, rhs);
-            simplify_matrix(c, false);
+            if (apply_simplifications) {
+                simplify_matrix(c, false);
+            }
         }
         {
             const matrix& rhs = transforms.at(perm.at(2));
             add_brackets(c);
             matrix d = mul(c, rhs);
-            simplify_matrix(d, true);
-            strip_brackets(d);
-            simplify_matrix(d, false);
+            if (apply_simplifications) {
+                simplify_matrix(d, true);
+                strip_brackets(d);
+                simplify_matrix(d, false);
+            }
             print_matrix(perm, d);
         }
     }
@@ -474,25 +478,31 @@ std::string generate_permutations(bool apply_simplifications) {
             const matrix& lhs = transforms.at(perm.at(0));
             const matrix& rhs = transforms.at(perm.at(1));
             c = mul(lhs, rhs);
-            simplify_matrix(c, false);
+            if (apply_simplifications) {
+                simplify_matrix(c, false);
+            }
         }
         matrix d;
         {
             const matrix& rhs = transforms.at(perm.at(2));
             add_brackets(c);
             d = mul(c, rhs);
-            simplify_matrix(d, true);
-            strip_brackets(d);
-            simplify_matrix(d, false);
+            if (apply_simplifications) {
+                simplify_matrix(d, true);
+                strip_brackets(d);
+                simplify_matrix(d, false);
+            }
         }
         {
             const matrix& rhs = transforms.at(perm.at(3));
             add_brackets(d);
             matrix e = mul(d, rhs);
-            simplify_matrix(e, true);
-            strip_brackets(e);
-            simplify_matrix(e, false);
-            simplify_matrix(e, false);
+            if (apply_simplifications) {
+                simplify_matrix(e, true);
+                strip_brackets(e);
+                simplify_matrix(e, false);
+                simplify_matrix(e, false);
+            }
             print_matrix(perm, e);
         }
     }
